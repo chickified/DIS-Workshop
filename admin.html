@@ -1,0 +1,2614 @@
+<!doctype html>  
+<html lang="en">  
+    <head>
+
+    </head>
+    <body>
+	
+        <script type="text/javascript">
+            window.onbeforeunload = function() {
+                return "Leaving?";
+            }
+        </script>
+        
+        <h1>Admin Console</h1>
+        
+        <div style="width: 100%; overflow: hidden;">
+            <div style="width: 800px; float: left;"> 
+                
+                <h2>Round Selector</h2>
+                <form id="roundSelector">
+                    Current Round:
+                    <select id="roundSelected">
+                        <option value="round1-normal">round1-normal</option>
+                        <option value="round2-speed">round2-speed</option>
+                    </select>
+                    <button type="button" id="roundSelectorButton">Change Round</button>
+                </form>
+                
+                <br/>
+                
+                <h2>Points Allocator</h2>
+                
+                <table border="1">
+                    <thead>
+                        <tbody id="doubleUpTable">
+                            <tr>
+                                <th>Team</th>
+                                <td>Pink</td>
+                                <td>Orange</td>
+                                <td>Yellow</td>
+                                <td>Green</td>
+                                <td>Blue</td>
+                                <td>Purple</td>
+                            </tr>
+                            <tr>
+                                <th>Used Double Up?</th>
+                                <td id="pinkUsedDoubleUp">false</td>
+                                <td id="orangeUsedDoubleUp">false</td>
+                                <td id="yellowUsedDoubleUp">false</td>
+                                <td id="greenUsedDoubleUp">false</td>
+                                <td id="blueUsedDoubleUp">false</td>
+                                <td id="purpleUsedDoubleUp">false</td>
+                            </tr>
+                        </tbody>
+                    </thead>
+                </table>
+            
+                <br/>
+                
+                <form id="pointAllocatorForm">
+                    Question Answer Correctly: 
+                    <select id="questionSelected">
+                        <option value="High-1">High-1</option>
+                        <option value="High-2">High-2</option>
+                        <option value="High-3">High-3</option>
+                        <option value="High-4">High-4</option>
+                        <option value="High-5">High-5</option>
+                        <option value="High-6">High-6</option>
+                        <option value="High-7">High-7</option>
+                        <option value="High-8">High-8</option>
+                        <option value="High-9">High-9</option>
+                        <option value="High-10">High-10</option>
+                        <option value="High-11">High-11</option>
+                        <option value="High-12">High-12</option>
+                        <option value="Medium-13">Medium-13</option>
+                        <option value="Medium-14">Medium-14</option>
+                        <option value="Medium-15">Medium-15</option>
+                        <option value="Medium-16">Medium-16</option>
+                        <option value="Medium-17">Medium-17</option>
+                        <option value="Medium-18">Medium-18</option>
+                        <option value="Medium-19">Medium-19</option>
+                        <option value="Medium-20">Medium-20</option>
+                        <option value="Medium-21">Medium-21</option>
+                        <option value="Medium-22">Medium-22</option>
+                        <option value="Medium-23">Medium-23</option>
+                        <option value="Medium-24">Medium-24</option>
+                        <option value="Low-25">Low-25</option>
+                        <option value="Low-26">Low-26</option>
+                        <option value="Low-27">Low-27</option>
+                        <option value="Low-28">Low-28</option>
+                        <option value="Low-29">Low-29</option>
+                        <option value="Low-30">Low-30</option>
+                        <option value="Low-31">Low-31</option>
+                        <option value="Low-32">Low-32</option>
+                        <option value="Low-33">Low-33</option>
+                        <option value="Low-34">Low-34</option>
+                        <option value="Low-35">Low-35</option>
+                        <option value="Low-36">Low-36</option>
+                    </select>
+                    Team: 
+                    <select id="teamSelected">
+                        <option value="pink">pink</option>
+                        <option value="orange">orange</option>
+                        <option value="yellow">yellow</option>
+                        <option value="green">green</option>
+                        <option value="blue">blue</option>
+                        <option value="purple">purple</option>
+                    </select>
+                    Double Up: 
+                    <select id="dblUpSelected">
+                        <option value="false">false</option>
+                        <option value="true">true</option>
+                    </select>
+                    <button type="button" id="pointsAllocatorButton">Allocate Points</button>
+                </form>
+                
+                <br/>
+                
+                <h2>Timer Controller</h2>
+                <div>
+                    <button type="button" id="startTimer">start timer</button>
+                    <button type="button" id="resetTimer">reset timer</button>
+                </div>
+                
+                <br/>
+                
+                <h2>Option Selection</h2>
+                <div>
+                    <button type="button" id="optionAgreen">make optionA green</button>
+                    <button type="button" id="optionAred">make optionA red</button>
+                    <button type="button" id="optionAblack">make optionA black</button>
+                </div>
+                
+                <br/>
+                
+                <div>
+                    <button type="button" id="optionBgreen">make optionB green</button>
+                    <button type="button" id="optionBred">make optionB red</button>
+                    <button type="button" id="optionBblack">make optionB black</button>
+                </div>
+                
+                <br/>
+                
+                <div>
+                    <button type="button" id="optionCgreen">make optionC green</button>
+                    <button type="button" id="optionCred">make optionC red</button>
+                    <button type="button" id="optionCblack">make optionC black</button>
+                </div>
+                
+                <br/>
+                
+                <div>
+                    <button type="button" id="optionDgreen">make optionD green</button>
+                    <button type="button" id="optionDred">make optionD red</button>
+                    <button type="button" id="optionDblack">make optionD black</button>
+                </div>
+                
+                <br/>
+            
+                <div>
+                    <h2>Sudden Death</h2>
+                    <button type="button" id="showSuddenDeath1">show sudden death 1</button>
+                    <button type="button" id="showSuddenDeath2">show sudden death 2</button>
+                </div>
+            
+                <div>
+                    <h2>Music</h2>
+                    <button type="button" id="playBackgroundBGM">Playing Music</button>
+                </div>
+            
+                <br/>
+                
+                <h2>Miscellaneous Commands</h2>
+                <form id="form" id="chat_form">
+                    <input id="chat_input" type="text">
+                    <input type="submit" value="Send">
+                </form>
+                           
+            </div>
+            
+            <div style="margin-left: 620px;"> 
+                <table style="border: solid;">
+                    <tr>
+                        <th>Question</th>
+                        <th>Answer</th>
+                        <th>Answered By</th>
+                    </tr>
+                    
+                    <tr>
+                        <td>High-1</td>
+                        <td>A</td>  
+                        <td class="questionHigh-1">(unanswered)</td>
+                    </tr>
+                    
+                    <tr>
+                        <td>High-2</td>
+                        <td>D</td>
+                        <td class="questionHigh-2">(unanswered)</td>
+                    </tr>
+                    
+                    <tr>
+                        <td>High-3</td>
+                        <td>D</td>
+                        <td class="questionHigh-3">(unanswered)</td>
+                    </tr>
+                    
+                    <tr>
+                        <td>High-4</td>
+                        <td>A</td>
+                        <td class="questionHigh-4">(unanswered)</td>
+                    </tr>
+                    
+                    <tr>
+                        <td>High-5</td>
+                        <td>D</td>
+                        <td class="questionHigh-5">(unanswered)</td>
+                    </tr>
+                    
+                    <tr>
+                        <td>High-6</td>
+                        <td>D</td>
+                        <td class="questionHigh-6">(unanswered)</td>
+                    </tr>
+                    
+                    <tr>
+                        <td>High-7</td>
+                        <td>B</td>
+                        <td class="questionHigh-7">(unanswered)</td>
+                    </tr>
+                    
+                    <tr>
+                        <td>High-8</td>
+                        <td>A</td>
+                        <td class="questionHigh-8">(unanswered)</td>
+                    </tr>
+                    
+                    <tr>
+                        <td>High-9</td>
+                        <td>C</td>
+                        <td class="questionHigh-9">(unanswered)</td>
+                    </tr>
+                    
+                    <tr>
+                        <td>High-10</td>
+                        <td>A</td>
+                        <td class="questionHigh-10">(unanswered)</td>
+                    </tr>
+                    
+                    <tr>
+                        <td>High-11</td>
+                        <td>B</td>
+                        <td class="questionHigh-11">(unanswered)</td>
+                    </tr>
+                    
+                    <tr>
+                        <td>High-12</td>
+                        <td>C</td>
+                        <td class="questionHigh-12">(unanswered)</td>
+                    </tr>
+                    
+                    <tr>
+                        <td>Medium-13</td>
+                        <td>D</td>
+                        <td class="questionMedium-13">(unanswered)</td>
+                    </tr>
+                    
+                    <tr>
+                        <td>Medium-14</td>
+                        <td>C</td>
+                        <td class="questionMedium-14">(unanswered)</td>
+                    </tr>
+                    
+                    <tr>
+                        <td>Medium-15</td>
+                        <td>D</td>
+                        <td class="questionMedium-15">(unanswered)</td>
+                    </tr>
+                    
+                    <tr>
+                        <td>Medium-16</td>
+                        <td>D</td>
+                        <td class="questionMedium-16">(unanswered)</td>
+                    </tr>
+                    
+                    <tr>
+                        <td>Medium-17</td>
+                        <td>C</td>
+                        <td class="questionMedium-17">(unanswered)</td>
+                    </tr>
+                    
+                    <tr>
+                        <td>Medium-18</td>
+                        <td>D</td>
+                        <td class="questionMedium-18">(unanswered)</td>
+                    </tr>
+                    
+                    <tr>
+                        <td>Medium-19</td>
+                        <td>D</td>
+                        <td class="questionMedium-19">(unanswered)</td>
+                    </tr>
+                    
+                    <tr>
+                        <td>Medium-20</td>
+                        <td>D</td>
+                        <td class="questionMedium-20">(unanswered)</td>
+                    </tr>
+                    
+                    <tr>
+                        <td>Medium-21</td>
+                        <td>C</td>
+                        <td class="questionMedium-21">(unanswered)</td>
+                    </tr>
+                    
+                    <tr>
+                        <td>Medium-22</td>
+                        <td>D</td>
+                        <td class="questionMedium-22">(unanswered)</td>
+                    </tr>
+                    
+                    <tr>
+                        <td>Medium-23</td>
+                        <td>B</td>
+                        <td class="questionMedium-23">(unanswered)</td>
+                    </tr>
+                    
+                    <tr>
+                        <td>Medium-24</td>
+                        <td>D</td>
+                        <td class="questionMedium-24">(unanswered)</td>
+                    </tr>
+                    
+                    <tr>
+                        <td>Low-25</td>
+                        <td>B</td>
+                        <td class="questionLow-25">(unanswered)</td>
+                    </tr>
+                    
+                    <tr>
+                        <td>Low-26</td>
+                        <td>C</td>
+                        <td class="questionLow-26">(unanswered)</td>
+                    </tr>
+                    
+                    <tr>
+                        <td>Low-27</td>
+                        <td>C</td>
+                        <td class="questionLow-27">(unanswered)</td>
+                    </tr>
+                    
+                    <tr>
+                        <td>Low-28</td>
+                        <td>A</td>
+                        <td class="questionLow-28">(unanswered)</td>
+                    </tr>
+                    
+                    <tr>
+                        <td>Low-29</td>
+                        <td>C</td>
+                        <td class="questionLow-29">(unanswered)</td>
+                    </tr>
+                    
+                    <tr>
+                        <td>Low-30</td>
+                        <td>D</td>
+                        <td class="questionLow-30">(unanswered)</td>
+                    </tr>
+                    
+                    <tr>
+                        <td>Low-31</td>
+                        <td>D</td>
+                        <td class="questionLow-31">(unanswered)</td>
+                    </tr>
+                    
+                    <tr>
+                        <td>Low-32</td>
+                        <td>B</td>
+                        <td class="questionLow-32">(unanswered)</td>
+                    </tr>
+                    
+                    <tr>
+                        <td>Low-33</td>
+                        <td>D</td>
+                        <td class="questionLow-33">(unanswered)</td>
+                    </tr>
+                    
+                    <tr>
+                        <td>Low-34</td>
+                        <td>B</td>
+                        <td class="questionLow-34">(unanswered)</td>
+                    </tr>
+                    
+                    <tr>
+                        <td>Low-35</td>
+                        <td>C</td>
+                        <td class="questionLow-35">(unanswered)</td>
+                    </tr>
+                    <tr>
+                        <td>Low-36</td>
+                        <td>B</td>
+                        <td class="questionLow-36">(unanswered)</td>
+                    </tr>
+                    <tr>
+                        <td>SuddenDeath-1</td>
+                        <td>D</td>
+                        <td class="questionSuddenDeath-1">(unanswered)</td>
+                    </tr>
+                    <tr>
+                        <td>SuddenDeath-2</td>
+                        <td>A</td>
+                        <td class="questionSuddenDeath-2">(unanswered)</td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+        
+        <div id="future" style=></div>
+                
+        <script src="/jquery/dist/jquery.js"></script>
+        <script src="/socket.io/socket.io.js"></script>
+		
+		
+		<script>  
+			var socket = io.connect();
+				socket.on('connect', function(data) {
+				socket.emit('join', 'Admin Console has connected');
+			});
+			socket.on('broad', function(data) {
+				 $('#future').append(data+ "<br/>");
+			});
+            
+            $( "#optionAgreen" ).click(function(){
+                $( "#optionAgreen" ).prop('disabled', true);
+                socket.emit('messages', "playCorrectBGM"); 
+                socket.emit('messages', "changeOptionAGreen"); 
+                setTimeout(function(){
+                    $( "#optionAgreen" ).prop('disabled', false);
+                }, 5000);
+            });
+            
+            $( "#optionAred" ).click(function(){
+                socket.emit('messages', "playIncorrectBGM"); 
+                socket.emit('messages', "changeOptionARed"); 
+            });
+            
+            $( "#optionAblack" ).click(function(){
+                socket.emit('messages', "changeOptionABlack"); 
+            });
+            
+            $( "#optionBgreen" ).click(function(){
+                socket.emit('messages', "changeOptionBGreen"); 
+                socket.emit('messages', "playCorrectBGM"); 
+            });
+            
+            $( "#optionBred" ).click(function(){
+                socket.emit('messages', "changeOptionBRed"); 
+                socket.emit('messages', "playIncorrectBGM"); 
+            });
+            
+            $( "#optionBblack" ).click(function(){
+                socket.emit('messages', "changeOptionBBlack"); 
+            });
+            
+            $( "#optionCgreen" ).click(function(){
+                socket.emit('messages', "changeOptionCGreen"); 
+                socket.emit('messages', "playCorrectBGM"); 
+            });
+            
+            $( "#optionCred" ).click(function(){
+                socket.emit('messages', "changeOptionCRed"); 
+                socket.emit('messages', "playIncorrectBGM"); 
+            });
+            
+            $( "#optionCblack" ).click(function(){
+                socket.emit('messages', "changeOptionCBlack"); 
+            });
+            
+            $( "#optionDgreen" ).click(function(){
+                socket.emit('messages', "changeOptionDGreen"); 
+                socket.emit('messages', "playCorrectBGM"); 
+            });
+            
+            $( "#optionDred" ).click(function(){
+                socket.emit('messages', "changeOptionDRed"); 
+                socket.emit('messages', "playIncorrectBGM"); 
+            });
+            
+            $( "#optionDblack" ).click(function(){
+                socket.emit('messages', "changeOptionDBlack"); 
+            });
+            
+            $( "#roundSelectorButton" ).click(function(){
+                var roundSelected = $( "#roundSelected" ).val();
+                
+                if(roundSelected == "round1-normal"){
+                    socket.emit('messages',"changeRound1");
+                }
+                else if(roundSelected == "round2-speed"){
+                    socket.emit('messages',"changeRound2");
+                }
+            });
+            
+            $( "#pointsAllocatorButton" ).click(function(){
+                // Code Segment to update table on this page
+                var questionSelected = $( "#questionSelected" ).val();
+                var teamSelected = $( "#teamSelected" ).val();
+                var isDoubleUp = $( "#dblUpSelected" ).val();
+                                
+                var tableRow = $("td").filter(function() {
+                    return $(this).text() == questionSelected;
+                }).closest("tr");
+                
+                var toFind = ".question" + questionSelected;
+                
+                if(isDoubleUp == "false"){
+                    $(toFind).html(teamSelected);
+                }
+                else if(isDoubleUp == "true"){
+                    $(toFind).html(teamSelected + " - double up");
+                }
+                                
+                // Code Segment to update scoreArray on publicView page                
+                if(questionSelected == "High-1"){
+                    if(teamSelected == "pink"){
+                        if(isDoubleUp == "false"){
+                            socket.emit('messages',"addPinkHigh");
+                        }
+                        else if(isDoubleUp == "true"){
+                            socket.emit('messages',"addPinkHighDouble");
+                            $( "#pinkUsedDoubleUp" ).html("true");
+                        }
+                    }
+                    if(teamSelected == "orange"){
+                        if(isDoubleUp == "false"){
+                            socket.emit('messages',"addOrangeHigh");
+                        }
+                        else if(isDoubleUp == "true"){
+                            socket.emit('messages',"addOrangeHighDouble");
+                            $( "#orangeUsedDoubleUp" ).html("true");
+                        }
+                    }
+                    if(teamSelected == "yellow"){
+                        if(isDoubleUp == "false"){
+                            socket.emit('messages',"addYellowHigh");
+                        }
+                        else if(isDoubleUp == "true"){
+                            socket.emit('messages',"addYellowHighDouble");
+                            $( "#yellowUsedDoubleUp" ).html("true");
+                        }
+                    }
+                    if(teamSelected == "green"){
+                        if(isDoubleUp == "false"){
+                            socket.emit('messages',"addGreenHigh");
+                        }
+                        else if(isDoubleUp == "true"){
+                            socket.emit('messages',"addGreenHighDouble");
+                            $( "#greenUsedDoubleUp" ).html("true");
+                        }
+                    }
+                    if(teamSelected == "blue"){
+                        if(isDoubleUp == "false"){
+                            socket.emit('messages',"addBlueHigh");
+                        }
+                        else if(isDoubleUp == "true"){
+                            socket.emit('messages',"addBlueHighDouble");
+                            $( "#blueUsedDoubleUp" ).html("true");
+                        }
+                    }
+                    if(teamSelected == "purple"){
+                        if(isDoubleUp == "false"){
+                            socket.emit('messages',"addPurpleHigh");
+                        }
+                        else if(isDoubleUp == "true"){
+                            socket.emit('messages',"addPurpleHighDouble");
+                            $( "#purpleUsedDoubleUp" ).html("true");
+                        }
+                    }
+                }
+                
+                if(questionSelected == "High-2"){
+                    if(teamSelected == "pink"){
+                        if(isDoubleUp == "false"){
+                            socket.emit('messages',"addPinkHigh");
+                        }
+                        else if(isDoubleUp == "true"){
+                            socket.emit('messages',"addPinkHighDouble");
+                            $( "#pinkUsedDoubleUp" ).html("true");
+                        }
+                    }
+                    if(teamSelected == "orange"){
+                        if(isDoubleUp == "false"){
+                            socket.emit('messages',"addOrangeHigh");
+                        }
+                        else if(isDoubleUp == "true"){
+                            socket.emit('messages',"addOrangeHighDouble");
+                            $( "#orangeUsedDoubleUp" ).html("true");
+                        }
+                    }
+                    if(teamSelected == "yellow"){
+                        if(isDoubleUp == "false"){
+                            socket.emit('messages',"addYellowHigh");
+                        }
+                        else if(isDoubleUp == "true"){
+                            socket.emit('messages',"addYellowHighDouble");
+                            $( "#yellowUsedDoubleUp" ).html("true");
+                        }
+                    }
+                    if(teamSelected == "green"){
+                        if(isDoubleUp == "false"){
+                            socket.emit('messages',"addGreenHigh");
+                        }
+                        else if(isDoubleUp == "true"){
+                            socket.emit('messages',"addGreenHighDouble");
+                            $( "#greenUsedDoubleUp" ).html("true");
+                        }
+                    }
+                    if(teamSelected == "blue"){
+                        if(isDoubleUp == "false"){
+                            socket.emit('messages',"addBlueHigh");
+                        }
+                        else if(isDoubleUp == "true"){
+                            socket.emit('messages',"addBlueHighDouble");
+                            $( "#blueUsedDoubleUp" ).html("true");
+                        }
+                    }
+                    if(teamSelected == "purple"){
+                        if(isDoubleUp == "false"){
+                            socket.emit('messages',"addPurpleHigh");
+                        }
+                        else if(isDoubleUp == "true"){
+                            socket.emit('messages',"addPurpleHighDouble");
+                            $( "#purpleUsedDoubleUp" ).html("true");
+                        }
+                    }
+                }
+                
+                if(questionSelected == "High-3"){
+                    if(teamSelected == "pink"){
+                        if(isDoubleUp == "false"){
+                            socket.emit('messages',"addPinkHigh");
+                        }
+                        else if(isDoubleUp == "true"){
+                            socket.emit('messages',"addPinkHighDouble");
+                            $( "#pinkUsedDoubleUp" ).html("true");
+                        }
+                    }
+                    if(teamSelected == "orange"){
+                        if(isDoubleUp == "false"){
+                            socket.emit('messages',"addOrangeHigh");
+                        }
+                        else if(isDoubleUp == "true"){
+                            socket.emit('messages',"addOrangeHighDouble");
+                            $( "#orangeUsedDoubleUp" ).html("true");
+                        }
+                    }
+                    if(teamSelected == "yellow"){
+                        if(isDoubleUp == "false"){
+                            socket.emit('messages',"addYellowHigh");
+                        }
+                        else if(isDoubleUp == "true"){
+                            socket.emit('messages',"addYellowHighDouble");
+                            $( "#yellowUsedDoubleUp" ).html("true");
+                        }
+                    }
+                    if(teamSelected == "green"){
+                        if(isDoubleUp == "false"){
+                            socket.emit('messages',"addGreenHigh");
+                        }
+                        else if(isDoubleUp == "true"){
+                            socket.emit('messages',"addGreenHighDouble");
+                            $( "#greenUsedDoubleUp" ).html("true");
+                        }
+                    }
+                    if(teamSelected == "blue"){
+                        if(isDoubleUp == "false"){
+                            socket.emit('messages',"addBlueHigh");
+                        }
+                        else if(isDoubleUp == "true"){
+                            socket.emit('messages',"addBlueHighDouble");
+                            $( "#blueUsedDoubleUp" ).html("true");
+                        }
+                    }
+                    if(teamSelected == "purple"){
+                        if(isDoubleUp == "false"){
+                            socket.emit('messages',"addPurpleHigh");
+                        }
+                        else if(isDoubleUp == "true"){
+                            socket.emit('messages',"addPurpleHighDouble");
+                            $( "#purpleUsedDoubleUp" ).html("true");
+                        }
+                    }
+                }
+                
+                if(questionSelected == "High-4"){
+                    if(teamSelected == "pink"){
+                        if(isDoubleUp == "false"){
+                            socket.emit('messages',"addPinkHigh");
+                        }
+                        else if(isDoubleUp == "true"){
+                            socket.emit('messages',"addPinkHighDouble");
+                            $( "#pinkUsedDoubleUp" ).html("true");
+                        }
+                    }
+                    if(teamSelected == "orange"){
+                        if(isDoubleUp == "false"){
+                            socket.emit('messages',"addOrangeHigh");
+                        }
+                        else if(isDoubleUp == "true"){
+                            socket.emit('messages',"addOrangeHighDouble");
+                            $( "#orangeUsedDoubleUp" ).html("true");
+                        }
+                    }
+                    if(teamSelected == "yellow"){
+                        if(isDoubleUp == "false"){
+                            socket.emit('messages',"addYellowHigh");
+                        }
+                        else if(isDoubleUp == "true"){
+                            socket.emit('messages',"addYellowHighDouble");
+                            $( "#yellowUsedDoubleUp" ).html("true");
+                        }
+                    }
+                    if(teamSelected == "green"){
+                        if(isDoubleUp == "false"){
+                            socket.emit('messages',"addGreenHigh");
+                        }
+                        else if(isDoubleUp == "true"){
+                            socket.emit('messages',"addGreenHighDouble");
+                            $( "#greenUsedDoubleUp" ).html("true");
+                        }
+                    }
+                    if(teamSelected == "blue"){
+                        if(isDoubleUp == "false"){
+                            socket.emit('messages',"addBlueHigh");
+                        }
+                        else if(isDoubleUp == "true"){
+                            socket.emit('messages',"addBlueHighDouble");
+                            $( "#blueUsedDoubleUp" ).html("true");
+                        }
+                    }
+                    if(teamSelected == "purple"){
+                        if(isDoubleUp == "false"){
+                            socket.emit('messages',"addPurpleHigh");
+                        }
+                        else if(isDoubleUp == "true"){
+                            socket.emit('messages',"addPurpleHighDouble");
+                            $( "#purpleUsedDoubleUp" ).html("true");
+                        }
+                    }
+                }
+                
+                if(questionSelected == "High-5"){
+                    if(teamSelected == "pink"){
+                        if(isDoubleUp == "false"){
+                            socket.emit('messages',"addPinkHigh");
+                        }
+                        else if(isDoubleUp == "true"){
+                            socket.emit('messages',"addPinkHighDouble");
+                            $( "#pinkUsedDoubleUp" ).html("true");
+                        }
+                    }
+                    if(teamSelected == "orange"){
+                        if(isDoubleUp == "false"){
+                            socket.emit('messages',"addOrangeHigh");
+                        }
+                        else if(isDoubleUp == "true"){
+                            socket.emit('messages',"addOrangeHighDouble");
+                            $( "#orangeUsedDoubleUp" ).html("true");
+                            
+                        }
+                    }
+                    if(teamSelected == "yellow"){
+                        if(isDoubleUp == "false"){
+                            socket.emit('messages',"addYellowHigh");
+                        }
+                        else if(isDoubleUp == "true"){
+                            socket.emit('messages',"addYellowHighDouble");
+                            $( "#yellowUsedDoubleUp" ).html("true");
+                        }
+                    }
+                    if(teamSelected == "green"){
+                        if(isDoubleUp == "false"){
+                            socket.emit('messages',"addGreenHigh");
+                        }
+                        else if(isDoubleUp == "true"){
+                            socket.emit('messages',"addGreenHighDouble");
+                            $( "#greenUsedDoubleUp" ).html("true");
+                        }
+                    }
+                    if(teamSelected == "blue"){
+                        if(isDoubleUp == "false"){
+                            socket.emit('messages',"addBlueHigh");
+                        }
+                        else if(isDoubleUp == "true"){
+                            socket.emit('messages',"addBlueHighDouble");
+                            $( "#blueUsedDoubleUp" ).html("true");
+                        }
+                    }
+                    if(teamSelected == "purple"){
+                        if(isDoubleUp == "false"){
+                            socket.emit('messages',"addPurpleHigh");
+                        }
+                        else if(isDoubleUp == "true"){
+                            socket.emit('messages',"addPurpleHighDouble");
+                            $( "#purpleUsedDoubleUp" ).html("true");
+                        }
+                    }
+                }
+                
+                if(questionSelected == "High-6"){
+                    if(teamSelected == "pink"){
+                        if(isDoubleUp == "false"){
+                            socket.emit('messages',"addPinkHigh");
+                        }
+                        else if(isDoubleUp == "true"){
+                            socket.emit('messages',"addPinkHighDouble");
+                            $( "#pinkUsedDoubleUp" ).html("true");
+                        }
+                    }
+                    if(teamSelected == "orange"){
+                        if(isDoubleUp == "false"){
+                            socket.emit('messages',"addOrangeHigh");
+                        }
+                        else if(isDoubleUp == "true"){
+                            socket.emit('messages',"addOrangeHighDouble");
+                            $( "#orangeUsedDoubleUp" ).html("true");
+                        }
+                    }
+                    if(teamSelected == "yellow"){
+                        if(isDoubleUp == "false"){
+                            socket.emit('messages',"addYellowHigh");
+                        }
+                        else if(isDoubleUp == "true"){
+                            socket.emit('messages',"addYellowHighDouble");
+                            $( "#yellowUsedDoubleUp" ).html("true");
+                        }
+                    }
+                    if(teamSelected == "green"){
+                        if(isDoubleUp == "false"){
+                            socket.emit('messages',"addGreenHigh");
+                        }
+                        else if(isDoubleUp == "true"){
+                            socket.emit('messages',"addGreenHighDouble");
+                            $( "#greenUsedDoubleUp" ).html("true");
+                        }
+                    }
+                    if(teamSelected == "blue"){
+                        if(isDoubleUp == "false"){
+                            socket.emit('messages',"addBlueHigh");
+                        }
+                        else if(isDoubleUp == "true"){
+                            socket.emit('messages',"addBlueHighDouble");
+                            $( "#blueUsedDoubleUp" ).html("true");
+                        }
+                    }
+                    if(teamSelected == "purple"){
+                        if(isDoubleUp == "false"){
+                            socket.emit('messages',"addPurpleHigh");
+                        }
+                        else if(isDoubleUp == "true"){
+                            socket.emit('messages',"addPurpleHighDouble");
+                            $( "#purpleUsedDoubleUp" ).html("true");
+                        }
+                    }
+                }
+                
+                if(questionSelected == "High-7"){
+                    if(teamSelected == "pink"){
+                        if(isDoubleUp == "false"){
+                            socket.emit('messages',"addPinkHigh");
+                        }
+                        else if(isDoubleUp == "true"){
+                            socket.emit('messages',"addPinkHighDouble");
+                            $( "#pinkUsedDoubleUp" ).html("true");
+                        }
+                    }
+                    if(teamSelected == "orange"){
+                        if(isDoubleUp == "false"){
+                            socket.emit('messages',"addOrangeHigh");
+                        }
+                        else if(isDoubleUp == "true"){
+                            socket.emit('messages',"addOrangeHighDouble");
+                            $( "#orangeUsedDoubleUp" ).html("true");
+                        }
+                    }
+                    if(teamSelected == "yellow"){
+                        if(isDoubleUp == "false"){
+                            socket.emit('messages',"addYellowHigh");
+                        }
+                        else if(isDoubleUp == "true"){
+                            socket.emit('messages',"addYellowHighDouble");
+                            $( "#yellowUsedDoubleUp" ).html("true");
+                        }
+                    }
+                    if(teamSelected == "green"){
+                        if(isDoubleUp == "false"){
+                            socket.emit('messages',"addGreenHigh");
+                        }
+                        else if(isDoubleUp == "true"){
+                            socket.emit('messages',"addGreenHighDouble");
+                            $( "#greenUsedDoubleUp" ).html("true");
+                        }
+                    }
+                    if(teamSelected == "blue"){
+                        if(isDoubleUp == "false"){
+                            socket.emit('messages',"addBlueHigh");
+                        }
+                        else if(isDoubleUp == "true"){
+                            socket.emit('messages',"addBlueHighDouble");
+                            $( "#blueUsedDoubleUp" ).html("true");
+                        }
+                    }
+                    if(teamSelected == "purple"){
+                        if(isDoubleUp == "false"){
+                            socket.emit('messages',"addPurpleHigh");
+                        }
+                        else if(isDoubleUp == "true"){
+                            socket.emit('messages',"addPurpleHighDouble");
+                            $( "#purpleUsedDoubleUp" ).html("true");
+                        }
+                    }
+                }
+                
+                if(questionSelected == "High-8"){
+                    if(teamSelected == "pink"){
+                        if(isDoubleUp == "false"){
+                            socket.emit('messages',"addPinkHigh");
+                        }
+                        else if(isDoubleUp == "true"){
+                            socket.emit('messages',"addPinkHighDouble");
+                            $( "#pinkUsedDoubleUp" ).html("true");
+                        }
+                    }
+                    if(teamSelected == "orange"){
+                        if(isDoubleUp == "false"){
+                            socket.emit('messages',"addOrangeHigh");
+                        }
+                        else if(isDoubleUp == "true"){
+                            socket.emit('messages',"addOrangeHighDouble");
+                            $( "#orangeUsedDoubleUp" ).html("true");
+                        }
+                    }
+                    if(teamSelected == "yellow"){
+                        if(isDoubleUp == "false"){
+                            socket.emit('messages',"addYellowHigh");
+                        }
+                        else if(isDoubleUp == "true"){
+                            socket.emit('messages',"addYellowHighDouble");
+                            $( "#yellowUsedDoubleUp" ).html("true");
+                        }
+                    }
+                    if(teamSelected == "green"){
+                        if(isDoubleUp == "false"){
+                            socket.emit('messages',"addGreenHigh");
+                        }
+                        else if(isDoubleUp == "true"){
+                            socket.emit('messages',"addGreenHighDouble");
+                            $( "#greenUsedDoubleUp" ).html("true");
+                        }
+                    }
+                    if(teamSelected == "blue"){
+                        if(isDoubleUp == "false"){
+                            socket.emit('messages',"addBlueHigh");
+                        }
+                        else if(isDoubleUp == "true"){
+                            socket.emit('messages',"addBlueHighDouble");
+                            $( "#blueUsedDoubleUp" ).html("true");
+                        }
+                    }
+                    if(teamSelected == "purple"){
+                        if(isDoubleUp == "false"){
+                            socket.emit('messages',"addPurpleHigh");
+                        }
+                        else if(isDoubleUp == "true"){
+                            socket.emit('messages',"addPurpleHighDouble");
+                            $( "#purpleUsedDoubleUp" ).html("true");
+                        }
+                    }
+                }
+                
+                if(questionSelected == "High-9"){
+                    if(teamSelected == "pink"){
+                        if(isDoubleUp == "false"){
+                            socket.emit('messages',"addPinkHigh");
+                        }
+                        else if(isDoubleUp == "true"){
+                            socket.emit('messages',"addPinkHighDouble");
+                            $( "#pinkUsedDoubleUp" ).html("true");
+                        }
+                    }
+                    if(teamSelected == "orange"){
+                        if(isDoubleUp == "false"){
+                            socket.emit('messages',"addOrangeHigh");
+                        }
+                        else if(isDoubleUp == "true"){
+                            socket.emit('messages',"addOrangeHighDouble");
+                            $( "#orangeUsedDoubleUp" ).html("true");
+                        }
+                    }
+                    if(teamSelected == "yellow"){
+                        if(isDoubleUp == "false"){
+                            socket.emit('messages',"addYellowHigh");
+                        }
+                        else if(isDoubleUp == "true"){
+                            socket.emit('messages',"addYellowHighDouble");
+                            $( "#yellowUsedDoubleUp" ).html("true");
+                        }
+                    }
+                    if(teamSelected == "green"){
+                        if(isDoubleUp == "false"){
+                            socket.emit('messages',"addGreenHigh");
+                        }
+                        else if(isDoubleUp == "true"){
+                            socket.emit('messages',"addGreenHighDouble");
+                            $( "#greenUsedDoubleUp" ).html("true");
+                        }
+                    }
+                    if(teamSelected == "blue"){
+                        if(isDoubleUp == "false"){
+                            socket.emit('messages',"addBlueHigh");
+                        }
+                        else if(isDoubleUp == "true"){
+                            socket.emit('messages',"addBlueHighDouble");
+                            $( "#blueUsedDoubleUp" ).html("true");
+                        }
+                    }
+                    if(teamSelected == "purple"){
+                        if(isDoubleUp == "false"){
+                            socket.emit('messages',"addPurpleHigh");
+                        }
+                        else if(isDoubleUp == "true"){
+                            socket.emit('messages',"addPurpleHighDouble");
+                            $( "#purpleUsedDoubleUp" ).html("true");
+                        }
+                    }
+                }
+                
+                if(questionSelected == "High-10"){
+                    if(teamSelected == "pink"){
+                        if(isDoubleUp == "false"){
+                            socket.emit('messages',"addPinkHigh");
+                        }
+                        else if(isDoubleUp == "true"){
+                            socket.emit('messages',"addPinkHighDouble");
+                            $( "#pinkUsedDoubleUp" ).html("true");
+                        }
+                    }
+                    if(teamSelected == "orange"){
+                        if(isDoubleUp == "false"){
+                            socket.emit('messages',"addOrangeHigh");
+                        }
+                        else if(isDoubleUp == "true"){
+                            socket.emit('messages',"addOrangeHighDouble");
+                            $( "#orangeUsedDoubleUp" ).html("true");
+                        }
+                    }
+                    if(teamSelected == "yellow"){
+                        if(isDoubleUp == "false"){
+                            socket.emit('messages',"addYellowHigh");
+                        }
+                        else if(isDoubleUp == "true"){
+                            socket.emit('messages',"addYellowHighDouble");
+                            $( "#yellowUsedDoubleUp" ).html("true");
+                        }
+                    }
+                    if(teamSelected == "green"){
+                        if(isDoubleUp == "false"){
+                            socket.emit('messages',"addGreenHigh");
+                        }
+                        else if(isDoubleUp == "true"){
+                            socket.emit('messages',"addGreenHighDouble");
+                            $( "#greenUsedDoubleUp" ).html("true");
+                        }
+                    }
+                    if(teamSelected == "blue"){
+                        if(isDoubleUp == "false"){
+                            socket.emit('messages',"addBlueHigh");
+                        }
+                        else if(isDoubleUp == "true"){
+                            socket.emit('messages',"addBlueHighDouble");
+                            $( "#blueUsedDoubleUp" ).html("true");
+                        }
+                    }
+                    if(teamSelected == "purple"){
+                        if(isDoubleUp == "false"){
+                            socket.emit('messages',"addPurpleHigh");
+                        }
+                        else if(isDoubleUp == "true"){
+                            socket.emit('messages',"addPurpleHighDouble");
+                            $( "#purpleUsedDoubleUp" ).html("true");
+                        }
+                    }
+                }
+                
+                if(questionSelected == "High-11"){
+                    if(teamSelected == "pink"){
+                        if(isDoubleUp == "false"){
+                            socket.emit('messages',"addPinkHigh");
+                        }
+                        else if(isDoubleUp == "true"){
+                            socket.emit('messages',"addPinkHighDouble");
+                            $( "#pinkUsedDoubleUp" ).html("true");
+                        }
+                    }
+                    if(teamSelected == "orange"){
+                        if(isDoubleUp == "false"){
+                            socket.emit('messages',"addOrangeHigh");
+                        }
+                        else if(isDoubleUp == "true"){
+                            socket.emit('messages',"addOrangeHighDouble");
+                            $( "#orangeUsedDoubleUp" ).html("true");
+                        }
+                    }
+                    if(teamSelected == "yellow"){
+                        if(isDoubleUp == "false"){
+                            socket.emit('messages',"addYellowHigh");
+                        }
+                        else if(isDoubleUp == "true"){
+                            socket.emit('messages',"addYellowHighDouble");
+                            $( "#yellowUsedDoubleUp" ).html("true");
+                        }
+                    }
+                    if(teamSelected == "green"){
+                        if(isDoubleUp == "false"){
+                            socket.emit('messages',"addGreenHigh");
+                        }
+                        else if(isDoubleUp == "true"){
+                            socket.emit('messages',"addGreenHighDouble");
+                            $( "#greenUsedDoubleUp" ).html("true");
+                        }
+                    }
+                    if(teamSelected == "blue"){
+                        if(isDoubleUp == "false"){
+                            socket.emit('messages',"addBlueHigh");
+                        }
+                        else if(isDoubleUp == "true"){
+                            socket.emit('messages',"addBlueHighDouble");
+                            $( "#blueUsedDoubleUp" ).html("true");
+                        }
+                    }
+                    if(teamSelected == "purple"){
+                        if(isDoubleUp == "false"){
+                            socket.emit('messages',"addPurpleHigh");
+                        }
+                        else if(isDoubleUp == "true"){
+                            socket.emit('messages',"addPurpleHighDouble");
+                            $( "#purpleUsedDoubleUp" ).html("true");
+                        }
+                    }
+                }
+                
+                if(questionSelected == "High-12"){
+                    if(teamSelected == "pink"){
+                        if(isDoubleUp == "false"){
+                            socket.emit('messages',"addPinkHigh");
+                        }
+                        else if(isDoubleUp == "true"){
+                            socket.emit('messages',"addPinkHighDouble");
+                            $( "#pinkUsedDoubleUp" ).html("true");
+                        }
+                    }
+                    if(teamSelected == "orange"){
+                        if(isDoubleUp == "false"){
+                            socket.emit('messages',"addOrangeHigh");
+                        }
+                        else if(isDoubleUp == "true"){
+                            socket.emit('messages',"addOrangeHighDouble");
+                            $( "#orangeUsedDoubleUp" ).html("true");
+                        }
+                    }
+                    if(teamSelected == "yellow"){
+                        if(isDoubleUp == "false"){
+                            socket.emit('messages',"addYellowHigh");
+                        }
+                        else if(isDoubleUp == "true"){
+                            socket.emit('messages',"addYellowHighDouble");
+                            $( "#yellowUsedDoubleUp" ).html("true");
+                        }
+                    }
+                    if(teamSelected == "green"){
+                        if(isDoubleUp == "false"){
+                            socket.emit('messages',"addGreenHigh");
+                        }
+                        else if(isDoubleUp == "true"){
+                            socket.emit('messages',"addGreenHighDouble");
+                            $( "#greenUsedDoubleUp" ).html("true");
+                        }
+                    }
+                    if(teamSelected == "blue"){
+                        if(isDoubleUp == "false"){
+                            socket.emit('messages',"addBlueHigh");
+                        }
+                        else if(isDoubleUp == "true"){
+                            socket.emit('messages',"addBlueHighDouble");
+                            $( "#blueUsedDoubleUp" ).html("true");
+                        }
+                    }
+                    if(teamSelected == "purple"){
+                        if(isDoubleUp == "false"){
+                            socket.emit('messages',"addPurpleHigh");
+                        }
+                        else if(isDoubleUp == "true"){
+                            socket.emit('messages',"addPurpleHighDouble");
+                            $( "#purpleUsedDoubleUp" ).html("true");
+                        }
+                    }
+                }
+                
+                if(questionSelected == "Medium-13"){
+                    if(teamSelected == "pink"){
+                        if(isDoubleUp == "false"){
+                            socket.emit('messages',"addPinkMedium");
+                        }
+                        else if(isDoubleUp == "true"){
+                            socket.emit('messages',"addPinkMediumDouble");
+                            $( "#pinkUsedDoubleUp" ).html("true");
+                        }
+                    }
+                    if(teamSelected == "orange"){
+                        if(isDoubleUp == "false"){
+                            socket.emit('messages',"addOrangeMedium");
+                        }
+                        else if(isDoubleUp == "true"){
+                            socket.emit('messages',"addOrangeMediumDouble");
+                            $( "#orangeUsedDoubleUp" ).html("true");
+                        }
+                    }
+                    if(teamSelected == "yellow"){
+                        if(isDoubleUp == "false"){
+                            socket.emit('messages',"addYellowMedium");
+                        }
+                        else if(isDoubleUp == "true"){
+                            socket.emit('messages',"addYellowMediumDouble");
+                            $( "#yellowUsedDoubleUp" ).html("true");
+                        }
+                    }
+                    if(teamSelected == "green"){
+                        if(isDoubleUp == "false"){
+                            socket.emit('messages',"addGreenMedium");
+                        }
+                        else if(isDoubleUp == "true"){
+                            socket.emit('messages',"addGreenMediumDouble");
+                            $( "#greenUsedDoubleUp" ).html("true");
+                        }
+                    }
+                    if(teamSelected == "blue"){
+                        if(isDoubleUp == "false"){
+                            socket.emit('messages',"addBlueMedium");
+                        }
+                        else if(isDoubleUp == "true"){
+                            socket.emit('messages',"addBlueMediumDouble");
+                            $( "#blueUsedDoubleUp" ).html("true");
+                        }
+                    }
+                    if(teamSelected == "purple"){
+                        if(isDoubleUp == "false"){
+                            socket.emit('messages',"addPurpleMedium");
+                        }
+                        else if(isDoubleUp == "true"){
+                            socket.emit('messages',"addPurpleMediumDouble");
+                            $( "#purpleUsedDoubleUp" ).html("true");
+                        }
+                    }
+                }
+                
+                if(questionSelected == "Medium-14"){
+                    if(teamSelected == "pink"){
+                        if(isDoubleUp == "false"){
+                            socket.emit('messages',"addPinkMedium");
+                        }
+                        else if(isDoubleUp == "true"){
+                            socket.emit('messages',"addPinkMediumDouble");
+                            $( "#pinkUsedDoubleUp" ).html("true");
+                        }
+                    }
+                    if(teamSelected == "orange"){
+                        if(isDoubleUp == "false"){
+                            socket.emit('messages',"addOrangeMedium");
+                        }
+                        else if(isDoubleUp == "true"){
+                            socket.emit('messages',"addOrangeMediumDouble");
+                            $( "#orangeUsedDoubleUp" ).html("true");
+                        }
+                    }
+                    if(teamSelected == "yellow"){
+                        if(isDoubleUp == "false"){
+                            socket.emit('messages',"addYellowMedium");
+                        }
+                        else if(isDoubleUp == "true"){
+                            socket.emit('messages',"addYellowMediumDouble");
+                            $( "#yellowUsedDoubleUp" ).html("true");
+                        }
+                    }
+                    if(teamSelected == "green"){
+                        if(isDoubleUp == "false"){
+                            socket.emit('messages',"addGreenMedium");
+                        }
+                        else if(isDoubleUp == "true"){
+                            socket.emit('messages',"addGreenMediumDouble");
+                            $( "#greenUsedDoubleUp" ).html("true");
+                        }
+                    }
+                    if(teamSelected == "blue"){
+                        if(isDoubleUp == "false"){
+                            socket.emit('messages',"addBlueMedium");
+                        }
+                        else if(isDoubleUp == "true"){
+                            socket.emit('messages',"addBlueMediumDouble");
+                            $( "#blueUsedDoubleUp" ).html("true");
+                        }
+                    }
+                    if(teamSelected == "purple"){
+                        if(isDoubleUp == "false"){
+                            socket.emit('messages',"addPurpleMedium");
+                        }
+                        else if(isDoubleUp == "true"){
+                            socket.emit('messages',"addPurpleMediumDouble");
+                            $( "#purpleUsedDoubleUp" ).html("true");
+                        }
+                    }
+                }
+                
+                if(questionSelected == "Medium-15"){
+                    if(teamSelected == "pink"){
+                        if(isDoubleUp == "false"){
+                            socket.emit('messages',"addPinkMedium");
+                        }
+                        else if(isDoubleUp == "true"){
+                            socket.emit('messages',"addPinkMediumDouble");
+                            $( "#pinkUsedDoubleUp" ).html("true");
+                        }
+                    }
+                    if(teamSelected == "orange"){
+                        if(isDoubleUp == "false"){
+                            socket.emit('messages',"addOrangeMedium");
+                        }
+                        else if(isDoubleUp == "true"){
+                            socket.emit('messages',"addOrangeMediumDouble");
+                            $( "#orangeUsedDoubleUp" ).html("true");
+                        }
+                    }
+                    if(teamSelected == "yellow"){
+                        if(isDoubleUp == "false"){
+                            socket.emit('messages',"addYellowMedium");
+                        }
+                        else if(isDoubleUp == "true"){
+                            socket.emit('messages',"addYellowMediumDouble");
+                            $( "#yellowUsedDoubleUp" ).html("true");
+                        }
+                    }
+                    if(teamSelected == "green"){
+                        if(isDoubleUp == "false"){
+                            socket.emit('messages',"addGreenMedium");
+                        }
+                        else if(isDoubleUp == "true"){
+                            socket.emit('messages',"addGreenMediumDouble");
+                            $( "#greenUsedDoubleUp" ).html("true");
+                        }
+                    }
+                    if(teamSelected == "blue"){
+                        if(isDoubleUp == "false"){
+                            socket.emit('messages',"addBlueMedium");
+                        }
+                        else if(isDoubleUp == "true"){
+                            socket.emit('messages',"addBlueMediumDouble");
+                            $( "#blueUsedDoubleUp" ).html("true");
+                        }
+                    }
+                    if(teamSelected == "purple"){
+                        if(isDoubleUp == "false"){
+                            socket.emit('messages',"addPurpleMedium");
+                        }
+                        else if(isDoubleUp == "true"){
+                            socket.emit('messages',"addPurpleMediumDouble");
+                            $( "#purpleUsedDoubleUp" ).html("true");
+                        }
+                    }
+                }
+                
+                if(questionSelected == "Medium-16"){
+                    if(teamSelected == "pink"){
+                        if(isDoubleUp == "false"){
+                            socket.emit('messages',"addPinkMedium");
+                        }
+                        else if(isDoubleUp == "true"){
+                            socket.emit('messages',"addPinkMediumDouble");
+                            $( "#pinkUsedDoubleUp" ).html("true");
+                        }
+                    }
+                    if(teamSelected == "orange"){
+                        if(isDoubleUp == "false"){
+                            socket.emit('messages',"addOrangeMedium");
+                        }
+                        else if(isDoubleUp == "true"){
+                            socket.emit('messages',"addOrangeMediumDouble");
+                            $( "#orangeUsedDoubleUp" ).html("true");
+                        }
+                    }
+                    if(teamSelected == "yellow"){
+                        if(isDoubleUp == "false"){
+                            socket.emit('messages',"addYellowMedium");
+                        }
+                        else if(isDoubleUp == "true"){
+                            socket.emit('messages',"addYellowMediumDouble");
+                            $( "#yellowUsedDoubleUp" ).html("true");
+                        }
+                    }
+                    if(teamSelected == "green"){
+                        if(isDoubleUp == "false"){
+                            socket.emit('messages',"addGreenMedium");
+                        }
+                        else if(isDoubleUp == "true"){
+                            socket.emit('messages',"addGreenMediumDouble");
+                            $( "#greenUsedDoubleUp" ).html("true");
+                        }
+                    }
+                    if(teamSelected == "blue"){
+                        if(isDoubleUp == "false"){
+                            socket.emit('messages',"addBlueMedium");
+                        }
+                        else if(isDoubleUp == "true"){
+                            socket.emit('messages',"addBlueMediumDouble");
+                            $( "#blueUsedDoubleUp" ).html("true");
+                        }
+                    }
+                    if(teamSelected == "purple"){
+                        if(isDoubleUp == "false"){
+                            socket.emit('messages',"addPurpleMedium");
+                        }
+                        else if(isDoubleUp == "true"){
+                            socket.emit('messages',"addPurpleMediumDouble");
+                            $( "#purpleUsedDoubleUp" ).html("true");
+                        }
+                    }
+                }
+                
+                if(questionSelected == "Medium-17"){
+                    if(teamSelected == "pink"){
+                        if(isDoubleUp == "false"){
+                            socket.emit('messages',"addPinkMedium");
+                        }
+                        else if(isDoubleUp == "true"){
+                            socket.emit('messages',"addPinkMediumDouble");
+                            $( "#pinkUsedDoubleUp" ).html("true");
+                        }
+                    }
+                    if(teamSelected == "orange"){
+                        if(isDoubleUp == "false"){
+                            socket.emit('messages',"addOrangeMedium");
+                        }
+                        else if(isDoubleUp == "true"){
+                            socket.emit('messages',"addOrangeMediumDouble");
+                            $( "#orangeUsedDoubleUp" ).html("true");
+                        }
+                    }
+                    if(teamSelected == "yellow"){
+                        if(isDoubleUp == "false"){
+                            socket.emit('messages',"addYellowMedium");
+                        }
+                        else if(isDoubleUp == "true"){
+                            socket.emit('messages',"addYellowMediumDouble");
+                            $( "#yellowUsedDoubleUp" ).html("true");
+                        }
+                    }
+                    if(teamSelected == "green"){
+                        if(isDoubleUp == "false"){
+                            socket.emit('messages',"addGreenMedium");
+                        }
+                        else if(isDoubleUp == "true"){
+                            socket.emit('messages',"addGreenMediumDouble");
+                            $( "#greenUsedDoubleUp" ).html("true");
+                        }
+                    }
+                    if(teamSelected == "blue"){
+                        if(isDoubleUp == "false"){
+                            socket.emit('messages',"addBlueMedium");
+                        }
+                        else if(isDoubleUp == "true"){
+                            socket.emit('messages',"addBlueMediumDouble");
+                            $( "#blueUsedDoubleUp" ).html("true");
+                        }
+                    }
+                    if(teamSelected == "purple"){
+                        if(isDoubleUp == "false"){
+                            socket.emit('messages',"addPurpleMedium");
+                        }
+                        else if(isDoubleUp == "true"){
+                            socket.emit('messages',"addPurpleMediumDouble");
+                            $( "#purpleUsedDoubleUp" ).html("true");
+                        }
+                    }
+                }
+                
+                if(questionSelected == "Medium-18"){
+                    if(teamSelected == "pink"){
+                        if(isDoubleUp == "false"){
+                            socket.emit('messages',"addPinkMedium");
+                        }
+                        else if(isDoubleUp == "true"){
+                            socket.emit('messages',"addPinkMediumDouble");
+                            $( "#pinkUsedDoubleUp" ).html("true");
+                        }
+                    }
+                    if(teamSelected == "orange"){
+                        if(isDoubleUp == "false"){
+                            socket.emit('messages',"addOrangeMedium");
+                        }
+                        else if(isDoubleUp == "true"){
+                            socket.emit('messages',"addOrangeMediumDouble");
+                            $( "#orangeUsedDoubleUp" ).html("true");
+                        }
+                    }
+                    if(teamSelected == "yellow"){
+                        if(isDoubleUp == "false"){
+                            socket.emit('messages',"addYellowMedium");
+                        }
+                        else if(isDoubleUp == "true"){
+                            socket.emit('messages',"addYellowMediumDouble");
+                            $( "#yellowUsedDoubleUp" ).html("true");
+                        }
+                    }
+                    if(teamSelected == "green"){
+                        if(isDoubleUp == "false"){
+                            socket.emit('messages',"addGreenMedium");
+                        }
+                        else if(isDoubleUp == "true"){
+                            socket.emit('messages',"addGreenMediumDouble");
+                            $( "#greenUsedDoubleUp" ).html("true");
+                        }
+                    }
+                    if(teamSelected == "blue"){
+                        if(isDoubleUp == "false"){
+                            socket.emit('messages',"addBlueMedium");
+                        }
+                        else if(isDoubleUp == "true"){
+                            socket.emit('messages',"addBlueMediumDouble");
+                            $( "#blueUsedDoubleUp" ).html("true");
+                        }
+                    }
+                    if(teamSelected == "purple"){
+                        if(isDoubleUp == "false"){
+                            socket.emit('messages',"addPurpleMedium");
+                        }
+                        else if(isDoubleUp == "true"){
+                            socket.emit('messages',"addPurpleMediumDouble");
+                            $( "#purpleUsedDoubleUp" ).html("true");
+                        }
+                    }
+                }
+                
+                if(questionSelected == "Medium-19"){
+                    if(teamSelected == "pink"){
+                        if(isDoubleUp == "false"){
+                            socket.emit('messages',"addPinkMedium");
+                        }
+                        else if(isDoubleUp == "true"){
+                            socket.emit('messages',"addPinkMediumDouble");
+                            $( "#pinkUsedDoubleUp" ).html("true");
+                        }
+                    }
+                    if(teamSelected == "orange"){
+                        if(isDoubleUp == "false"){
+                            socket.emit('messages',"addOrangeMedium");
+                        }
+                        else if(isDoubleUp == "true"){
+                            socket.emit('messages',"addOrangeMediumDouble");
+                            $( "#orangeUsedDoubleUp" ).html("true");
+                        }
+                    }
+                    if(teamSelected == "yellow"){
+                        if(isDoubleUp == "false"){
+                            socket.emit('messages',"addYellowMedium");
+                        }
+                        else if(isDoubleUp == "true"){
+                            socket.emit('messages',"addYellowMediumDouble");
+                            $( "#yellowUsedDoubleUp" ).html("true");
+                        }
+                    }
+                    if(teamSelected == "green"){
+                        if(isDoubleUp == "false"){
+                            socket.emit('messages',"addGreenMedium");
+                        }
+                        else if(isDoubleUp == "true"){
+                            socket.emit('messages',"addGreenMediumDouble");
+                            $( "#greenUsedDoubleUp" ).html("true");
+                        }
+                    }
+                    if(teamSelected == "blue"){
+                        if(isDoubleUp == "false"){
+                            socket.emit('messages',"addBlueMedium");
+                        }
+                        else if(isDoubleUp == "true"){
+                            socket.emit('messages',"addBlueMediumDouble");
+                            $( "#blueUsedDoubleUp" ).html("true");
+                        }
+                    }
+                    if(teamSelected == "purple"){
+                        if(isDoubleUp == "false"){
+                            socket.emit('messages',"addPurpleMedium");
+                        }
+                        else if(isDoubleUp == "true"){
+                            socket.emit('messages',"addPurpleMediumDouble");
+                            $( "#purpleUsedDoubleUp" ).html("true");
+                        }
+                    }
+                }
+                
+                if(questionSelected == "Medium-20"){
+                    if(teamSelected == "pink"){
+                        if(isDoubleUp == "false"){
+                            socket.emit('messages',"addPinkMedium");
+                        }
+                        else if(isDoubleUp == "true"){
+                            socket.emit('messages',"addPinkMediumDouble");
+                            $( "#pinkUsedDoubleUp" ).html("true");
+                        }
+                    }
+                    if(teamSelected == "orange"){
+                        if(isDoubleUp == "false"){
+                            socket.emit('messages',"addOrangeMedium");
+                        }
+                        else if(isDoubleUp == "true"){
+                            socket.emit('messages',"addOrangeMediumDouble");
+                            $( "#orangeUsedDoubleUp" ).html("true");
+                        }
+                    }
+                    if(teamSelected == "yellow"){
+                        if(isDoubleUp == "false"){
+                            socket.emit('messages',"addYellowMedium");
+                        }
+                        else if(isDoubleUp == "true"){
+                            socket.emit('messages',"addYellowMediumDouble");
+                            $( "#yellowUsedDoubleUp" ).html("true");
+                        }
+                    }
+                    if(teamSelected == "green"){
+                        if(isDoubleUp == "false"){
+                            socket.emit('messages',"addGreenMedium");
+                        }
+                        else if(isDoubleUp == "true"){
+                            socket.emit('messages',"addGreenMediumDouble");
+                            $( "#greenUsedDoubleUp" ).html("true");
+                        }
+                    }
+                    if(teamSelected == "blue"){
+                        if(isDoubleUp == "false"){
+                            socket.emit('messages',"addBlueMedium");
+                        }
+                        else if(isDoubleUp == "true"){
+                            socket.emit('messages',"addBlueMediumDouble");
+                            $( "#blueUsedDoubleUp" ).html("true");
+                        }
+                    }
+                    if(teamSelected == "purple"){
+                        if(isDoubleUp == "false"){
+                            socket.emit('messages',"addPurpleMedium");
+                        }
+                        else if(isDoubleUp == "true"){
+                            socket.emit('messages',"addPurpleMediumDouble");
+                            $( "#purpleUsedDoubleUp" ).html("true");
+                        }
+                    }
+                }
+                
+                if(questionSelected == "Medium-21"){
+                    if(teamSelected == "pink"){
+                        if(isDoubleUp == "false"){
+                            socket.emit('messages',"addPinkMedium");
+                        }
+                        else if(isDoubleUp == "true"){
+                            socket.emit('messages',"addPinkMediumDouble");
+                            $( "#pinkUsedDoubleUp" ).html("true");
+                        }
+                    }
+                    if(teamSelected == "orange"){
+                        if(isDoubleUp == "false"){
+                            socket.emit('messages',"addOrangeMedium");
+                        }
+                        else if(isDoubleUp == "true"){
+                            socket.emit('messages',"addOrangeMediumDouble");
+                            $( "#orangeUsedDoubleUp" ).html("true");
+                        }
+                    }
+                    if(teamSelected == "yellow"){
+                        if(isDoubleUp == "false"){
+                            socket.emit('messages',"addYellowMedium");
+                        }
+                        else if(isDoubleUp == "true"){
+                            socket.emit('messages',"addYellowMediumDouble");
+                            $( "#yellowUsedDoubleUp" ).html("true");
+                        }
+                    }
+                    if(teamSelected == "green"){
+                        if(isDoubleUp == "false"){
+                            socket.emit('messages',"addGreenMedium");
+                        }
+                        else if(isDoubleUp == "true"){
+                            socket.emit('messages',"addGreenMediumDouble");
+                            $( "#greenUsedDoubleUp" ).html("true");
+                        }
+                    }
+                    if(teamSelected == "blue"){
+                        if(isDoubleUp == "false"){
+                            socket.emit('messages',"addBlueMedium");
+                        }
+                        else if(isDoubleUp == "true"){
+                            socket.emit('messages',"addBlueMediumDouble");
+                            $( "#blueUsedDoubleUp" ).html("true");
+                        }
+                    }
+                    if(teamSelected == "purple"){
+                        if(isDoubleUp == "false"){
+                            socket.emit('messages',"addPurpleMedium");
+                        }
+                        else if(isDoubleUp == "true"){
+                            socket.emit('messages',"addPurpleMediumDouble");
+                            $( "#purpleUsedDoubleUp" ).html("true");
+                        }
+                    }
+                }
+                
+                if(questionSelected == "Medium-22"){
+                    if(teamSelected == "pink"){
+                        if(isDoubleUp == "false"){
+                            socket.emit('messages',"addPinkMedium");
+                        }
+                        else if(isDoubleUp == "true"){
+                            socket.emit('messages',"addPinkMediumDouble");
+                            $( "#pinkUsedDoubleUp" ).html("true");
+                        }
+                    }
+                    if(teamSelected == "orange"){
+                        if(isDoubleUp == "false"){
+                            socket.emit('messages',"addOrangeMedium");
+                        }
+                        else if(isDoubleUp == "true"){
+                            socket.emit('messages',"addOrangeMediumDouble");
+                            $( "#orangeUsedDoubleUp" ).html("true");
+                        }
+                    }
+                    if(teamSelected == "yellow"){
+                        if(isDoubleUp == "false"){
+                            socket.emit('messages',"addYellowMedium");
+                        }
+                        else if(isDoubleUp == "true"){
+                            socket.emit('messages',"addYellowMediumDouble");
+                            $( "#yellowUsedDoubleUp" ).html("true");
+                        }
+                    }
+                    if(teamSelected == "green"){
+                        if(isDoubleUp == "false"){
+                            socket.emit('messages',"addGreenMedium");
+                        }
+                        else if(isDoubleUp == "true"){
+                            socket.emit('messages',"addGreenMediumDouble");
+                            $( "#greenUsedDoubleUp" ).html("true");
+                        }
+                    }
+                    if(teamSelected == "blue"){
+                        if(isDoubleUp == "false"){
+                            socket.emit('messages',"addBlueMedium");
+                        }
+                        else if(isDoubleUp == "true"){
+                            socket.emit('messages',"addBlueMediumDouble");
+                            $( "#blueUsedDoubleUp" ).html("true");
+                        }
+                    }
+                    if(teamSelected == "purple"){
+                        if(isDoubleUp == "false"){
+                            socket.emit('messages',"addPurpleMedium");
+                        }
+                        else if(isDoubleUp == "true"){
+                            socket.emit('messages',"addPurpleMediumDouble");
+                            $( "#purpleUsedDoubleUp" ).html("true");
+                        }
+                    }
+                }
+                
+                if(questionSelected == "Medium-23"){
+                    if(teamSelected == "pink"){
+                        if(isDoubleUp == "false"){
+                            socket.emit('messages',"addPinkMedium");
+                        }
+                        else if(isDoubleUp == "true"){
+                            socket.emit('messages',"addPinkMediumDouble");
+                            $( "#pinkUsedDoubleUp" ).html("true");
+                        }
+                    }
+                    if(teamSelected == "orange"){
+                        if(isDoubleUp == "false"){
+                            socket.emit('messages',"addOrangeMedium");
+                        }
+                        else if(isDoubleUp == "true"){
+                            socket.emit('messages',"addOrangeMediumDouble");
+                            $( "#orangeUsedDoubleUp" ).html("true");
+                        }
+                    }
+                    if(teamSelected == "yellow"){
+                        if(isDoubleUp == "false"){
+                            socket.emit('messages',"addYellowMedium");
+                        }
+                        else if(isDoubleUp == "true"){
+                            socket.emit('messages',"addYellowMediumDouble");
+                            $( "#yellowUsedDoubleUp" ).html("true");
+                        }
+                    }
+                    if(teamSelected == "green"){
+                        if(isDoubleUp == "false"){
+                            socket.emit('messages',"addGreenMedium");
+                        }
+                        else if(isDoubleUp == "true"){
+                            socket.emit('messages',"addGreenMediumDouble");
+                            $( "#greenUsedDoubleUp" ).html("true");
+                        }
+                    }
+                    if(teamSelected == "blue"){
+                        if(isDoubleUp == "false"){
+                            socket.emit('messages',"addBlueMedium");
+                        }
+                        else if(isDoubleUp == "true"){
+                            socket.emit('messages',"addBlueMediumDouble");
+                            $( "#blueUsedDoubleUp" ).html("true");
+                        }
+                    }
+                    if(teamSelected == "purple"){
+                        if(isDoubleUp == "false"){
+                            socket.emit('messages',"addPurpleMedium");
+                        }
+                        else if(isDoubleUp == "true"){
+                            socket.emit('messages',"addPurpleMediumDouble");
+                            $( "#purpleUsedDoubleUp" ).html("true");
+                        }
+                    }
+                }
+                
+                if(questionSelected == "Medium-24"){
+                    if(teamSelected == "pink"){
+                        if(isDoubleUp == "false"){
+                            socket.emit('messages',"addPinkMedium");
+                        }
+                        else if(isDoubleUp == "true"){
+                            socket.emit('messages',"addPinkMediumDouble");
+                            $( "#pinkUsedDoubleUp" ).html("true");
+                        }
+                    }
+                    if(teamSelected == "orange"){
+                        if(isDoubleUp == "false"){
+                            socket.emit('messages',"addOrangeMedium");
+                        }
+                        else if(isDoubleUp == "true"){
+                            socket.emit('messages',"addOrangeMediumDouble");
+                            $( "#orangeUsedDoubleUp" ).html("true");
+                        }
+                    }
+                    if(teamSelected == "yellow"){
+                        if(isDoubleUp == "false"){
+                            socket.emit('messages',"addYellowMedium");
+                        }
+                        else if(isDoubleUp == "true"){
+                            socket.emit('messages',"addYellowMediumDouble");
+                            $( "#yellowUsedDoubleUp" ).html("true");
+                        }
+                    }
+                    if(teamSelected == "green"){
+                        if(isDoubleUp == "false"){
+                            socket.emit('messages',"addGreenMedium");
+                        }
+                        else if(isDoubleUp == "true"){
+                            socket.emit('messages',"addGreenMediumDouble");
+                            $( "#greenUsedDoubleUp" ).html("true");
+                        }
+                    }
+                    if(teamSelected == "blue"){
+                        if(isDoubleUp == "false"){
+                            socket.emit('messages',"addBlueMedium");
+                        }
+                        else if(isDoubleUp == "true"){
+                            socket.emit('messages',"addBlueMediumDouble");
+                            $( "#blueUsedDoubleUp" ).html("true");
+                        }
+                    }
+                    if(teamSelected == "purple"){
+                        if(isDoubleUp == "false"){
+                            socket.emit('messages',"addPurpleMedium");
+                        }
+                        else if(isDoubleUp == "true"){
+                            socket.emit('messages',"addPurpleMediumDouble");
+                            $( "#purpleUsedDoubleUp" ).html("true");
+                        }
+                    }
+                }
+                
+                if(questionSelected == "Low-25"){
+                    if(teamSelected == "pink"){
+                        if(isDoubleUp == "false"){
+                            socket.emit('messages',"addPinkLow");
+                        }
+                        else if(isDoubleUp == "true"){
+                            socket.emit('messages',"addPinkLowDouble");
+                            $( "#pinkUsedDoubleUp" ).html("true");
+                        }
+                    }
+                    if(teamSelected == "orange"){
+                        if(isDoubleUp == "false"){
+                            socket.emit('messages',"addOrangeLow");
+                        }
+                        else if(isDoubleUp == "true"){
+                            socket.emit('messages',"addOrangeLowDouble");
+                            $( "#orangeUsedDoubleUp" ).html("true");
+                        }
+                    }
+                    if(teamSelected == "yellow"){
+                        if(isDoubleUp == "false"){
+                            socket.emit('messages',"addYellowLow");
+                        }
+                        else if(isDoubleUp == "true"){
+                            socket.emit('messages',"addYellowLowDouble");
+                            $( "#yellowUsedDoubleUp" ).html("true");
+                        }
+                    }
+                    if(teamSelected == "green"){
+                        if(isDoubleUp == "false"){
+                            socket.emit('messages',"addGreenLow");
+                        }
+                        else if(isDoubleUp == "true"){
+                            socket.emit('messages',"addGreenLowDouble");
+                            $( "#greenUsedDoubleUp" ).html("true");
+                        }
+                    }
+                    if(teamSelected == "blue"){
+                        if(isDoubleUp == "false"){
+                            socket.emit('messages',"addBlueLow");
+                        }
+                        else if(isDoubleUp == "true"){
+                            socket.emit('messages',"addBlueLowDouble");
+                            $( "#blueUsedDoubleUp" ).html("true");
+                        }
+                    }
+                    if(teamSelected == "purple"){
+                        if(isDoubleUp == "false"){
+                            socket.emit('messages',"addPurpleLow");
+                        }
+                        else if(isDoubleUp == "true"){
+                            socket.emit('messages',"addPurpleLowDouble");
+                            $( "#purpleUsedDoubleUp" ).html("true");
+                        }
+                    }
+                }
+                
+                if(questionSelected == "Low-26"){
+                    if(teamSelected == "pink"){
+                        if(isDoubleUp == "false"){
+                            socket.emit('messages',"addPinkLow");
+                        }
+                        else if(isDoubleUp == "true"){
+                            socket.emit('messages',"addPinkLowDouble");
+                            $( "#pinkUsedDoubleUp" ).html("true");
+                        }
+                    }
+                    if(teamSelected == "orange"){
+                        if(isDoubleUp == "false"){
+                            socket.emit('messages',"addOrangeLow");
+                        }
+                        else if(isDoubleUp == "true"){
+                            socket.emit('messages',"addOrangeLowDouble");
+                            $( "#orangeUsedDoubleUp" ).html("true");
+                        }
+                    }
+                    if(teamSelected == "yellow"){
+                        if(isDoubleUp == "false"){
+                            socket.emit('messages',"addYellowLow");
+                        }
+                        else if(isDoubleUp == "true"){
+                            socket.emit('messages',"addYellowLowDouble");
+                            $( "#yellowUsedDoubleUp" ).html("true");
+                        }
+                    }
+                    if(teamSelected == "green"){
+                        if(isDoubleUp == "false"){
+                            socket.emit('messages',"addGreenLow");
+                        }
+                        else if(isDoubleUp == "true"){
+                            socket.emit('messages',"addGreenLowDouble");
+                            $( "#greenUsedDoubleUp" ).html("true");
+                        }
+                    }
+                    if(teamSelected == "blue"){
+                        if(isDoubleUp == "false"){
+                            socket.emit('messages',"addBlueLow");
+                        }
+                        else if(isDoubleUp == "true"){
+                            socket.emit('messages',"addBlueLowDouble");
+                            $( "#blueUsedDoubleUp" ).html("true");
+                        }
+                    }
+                    if(teamSelected == "purple"){
+                        if(isDoubleUp == "false"){
+                            socket.emit('messages',"addPurpleLow");
+                        }
+                        else if(isDoubleUp == "true"){
+                            socket.emit('messages',"addPurpleLowDouble");
+                            $( "#purpleUsedDoubleUp" ).html("true");
+                        }
+                    }
+                }
+                
+                if(questionSelected == "Low-27"){
+                    if(teamSelected == "pink"){
+                        if(isDoubleUp == "false"){
+                            socket.emit('messages',"addPinkLow");
+                        }
+                        else if(isDoubleUp == "true"){
+                            socket.emit('messages',"addPinkLowDouble");
+                            $( "#pinkUsedDoubleUp" ).html("true");
+                        }
+                    }
+                    if(teamSelected == "orange"){
+                        if(isDoubleUp == "false"){
+                            socket.emit('messages',"addOrangeLow");
+                        }
+                        else if(isDoubleUp == "true"){
+                            socket.emit('messages',"addOrangeLowDouble");
+                            $( "#orangeUsedDoubleUp" ).html("true");
+                        }
+                    }
+                    if(teamSelected == "yellow"){
+                        if(isDoubleUp == "false"){
+                            socket.emit('messages',"addYellowLow");
+                        }
+                        else if(isDoubleUp == "true"){
+                            socket.emit('messages',"addYellowLowDouble");
+                            $( "#yellowUsedDoubleUp" ).html("true");
+                        }
+                    }
+                    if(teamSelected == "green"){
+                        if(isDoubleUp == "false"){
+                            socket.emit('messages',"addGreenLow");
+                        }
+                        else if(isDoubleUp == "true"){
+                            socket.emit('messages',"addGreenLowDouble");
+                            $( "#greenUsedDoubleUp" ).html("true");
+                        }
+                    }
+                    if(teamSelected == "blue"){
+                        if(isDoubleUp == "false"){
+                            socket.emit('messages',"addBlueLow");
+                        }
+                        else if(isDoubleUp == "true"){
+                            socket.emit('messages',"addBlueLowDouble");
+                            $( "#blueUsedDoubleUp" ).html("true");
+                        }
+                    }
+                    if(teamSelected == "purple"){
+                        if(isDoubleUp == "false"){
+                            socket.emit('messages',"addPurpleLow");
+                        }
+                        else if(isDoubleUp == "true"){
+                            socket.emit('messages',"addPurpleLowDouble");
+                            $( "#purpleUsedDoubleUp" ).html("true");
+                        }
+                    }
+                }
+                
+                if(questionSelected == "Low-28"){
+                    if(teamSelected == "pink"){
+                        if(isDoubleUp == "false"){
+                            socket.emit('messages',"addPinkLow");
+                        }
+                        else if(isDoubleUp == "true"){
+                            socket.emit('messages',"addPinkLowDouble");
+                            $( "#pinkUsedDoubleUp" ).html("true");
+                        }
+                    }
+                    if(teamSelected == "orange"){
+                        if(isDoubleUp == "false"){
+                            socket.emit('messages',"addOrangeLow");
+                        }
+                        else if(isDoubleUp == "true"){
+                            socket.emit('messages',"addOrangeLowDouble");
+                            $( "#orangeUsedDoubleUp" ).html("true");
+                        }
+                    }
+                    if(teamSelected == "yellow"){
+                        if(isDoubleUp == "false"){
+                            socket.emit('messages',"addYellowLow");
+                        }
+                        else if(isDoubleUp == "true"){
+                            socket.emit('messages',"addYellowLowDouble");
+                            $( "#yellowUsedDoubleUp" ).html("true");
+                        }
+                    }
+                    if(teamSelected == "green"){
+                        if(isDoubleUp == "false"){
+                            socket.emit('messages',"addGreenLow");
+                        }
+                        else if(isDoubleUp == "true"){
+                            socket.emit('messages',"addGreenLowDouble");
+                            $( "#greenUsedDoubleUp" ).html("true");
+                        }
+                    }
+                    if(teamSelected == "blue"){
+                        if(isDoubleUp == "false"){
+                            socket.emit('messages',"addBlueLow");
+                        }
+                        else if(isDoubleUp == "true"){
+                            socket.emit('messages',"addBlueLowDouble");
+                            $( "#blueUsedDoubleUp" ).html("true");
+                        }
+                    }
+                    if(teamSelected == "purple"){
+                        if(isDoubleUp == "false"){
+                            socket.emit('messages',"addPurpleLow");
+                        }
+                        else if(isDoubleUp == "true"){
+                            socket.emit('messages',"addPurpleLowDouble");
+                            $( "#purpleUsedDoubleUp" ).html("true");
+                        }
+                    }
+                }
+                
+                if(questionSelected == "Low-29"){
+                    if(teamSelected == "pink"){
+                        if(isDoubleUp == "false"){
+                            socket.emit('messages',"addPinkLow");
+                        }
+                        else if(isDoubleUp == "true"){
+                            socket.emit('messages',"addPinkLowDouble");
+                            $( "#pinkUsedDoubleUp" ).html("true");
+                        }
+                    }
+                    if(teamSelected == "orange"){
+                        if(isDoubleUp == "false"){
+                            socket.emit('messages',"addOrangeLow");
+                        }
+                        else if(isDoubleUp == "true"){
+                            socket.emit('messages',"addOrangeLowDouble");
+                            $( "#orangeUsedDoubleUp" ).html("true");
+                        }
+                    }
+                    if(teamSelected == "yellow"){
+                        if(isDoubleUp == "false"){
+                            socket.emit('messages',"addYellowLow");
+                        }
+                        else if(isDoubleUp == "true"){
+                            socket.emit('messages',"addYellowLowDouble");
+                            $( "#yellowUsedDoubleUp" ).html("true");
+                        }
+                    }
+                    if(teamSelected == "green"){
+                        if(isDoubleUp == "false"){
+                            socket.emit('messages',"addGreenLow");
+                        }
+                        else if(isDoubleUp == "true"){
+                            socket.emit('messages',"addGreenLowDouble");
+                            $( "#greenUsedDoubleUp" ).html("true");
+                        }
+                    }
+                    if(teamSelected == "blue"){
+                        if(isDoubleUp == "false"){
+                            socket.emit('messages',"addBlueLow");
+                        }
+                        else if(isDoubleUp == "true"){
+                            socket.emit('messages',"addBlueLowDouble");
+                            $( "#blueUsedDoubleUp" ).html("true");
+                        }
+                    }
+                    if(teamSelected == "purple"){
+                        if(isDoubleUp == "false"){
+                            socket.emit('messages',"addPurpleLow");
+                        }
+                        else if(isDoubleUp == "true"){
+                            socket.emit('messages',"addPurpleLowDouble");
+                            $( "#purpleUsedDoubleUp" ).html("true");
+                        }
+                    }
+                }
+                
+                if(questionSelected == "Low-30"){
+                    if(teamSelected == "pink"){
+                        if(isDoubleUp == "false"){
+                            socket.emit('messages',"addPinkLow");
+                        }
+                        else if(isDoubleUp == "true"){
+                            socket.emit('messages',"addPinkLowDouble");
+                            $( "#pinkUsedDoubleUp" ).html("true");
+                        }
+                    }
+                    if(teamSelected == "orange"){
+                        if(isDoubleUp == "false"){
+                            socket.emit('messages',"addOrangeLow");
+                        }
+                        else if(isDoubleUp == "true"){
+                            socket.emit('messages',"addOrangeLowDouble");
+                            $( "#orangeUsedDoubleUp" ).html("true");
+                        }
+                    }
+                    if(teamSelected == "yellow"){
+                        if(isDoubleUp == "false"){
+                            socket.emit('messages',"addYellowLow");
+                        }
+                        else if(isDoubleUp == "true"){
+                            socket.emit('messages',"addYellowLowDouble");
+                            $( "#yellowUsedDoubleUp" ).html("true");
+                        }
+                    }
+                    if(teamSelected == "green"){
+                        if(isDoubleUp == "false"){
+                            socket.emit('messages',"addGreenLow");
+                        }
+                        else if(isDoubleUp == "true"){
+                            socket.emit('messages',"addGreenLowDouble");
+                            $( "#greenUsedDoubleUp" ).html("true");
+                        }
+                    }
+                    if(teamSelected == "blue"){
+                        if(isDoubleUp == "false"){
+                            socket.emit('messages',"addBlueLow");
+                        }
+                        else if(isDoubleUp == "true"){
+                            socket.emit('messages',"addBlueLowDouble");
+                            $( "#blueUsedDoubleUp" ).html("true");
+                        }
+                    }
+                    if(teamSelected == "purple"){
+                        if(isDoubleUp == "false"){
+                            socket.emit('messages',"addPurpleLow");
+                        }
+                        else if(isDoubleUp == "true"){
+                            socket.emit('messages',"addPurpleLowDouble");
+                            $( "#purpleUsedDoubleUp" ).html("true");
+                        }
+                    }
+                }
+                
+                if(questionSelected == "Low-31"){
+                    if(teamSelected == "pink"){
+                        if(isDoubleUp == "false"){
+                            socket.emit('messages',"addPinkLow");
+                        }
+                        else if(isDoubleUp == "true"){
+                            socket.emit('messages',"addPinkLowDouble");
+                            $( "#pinkUsedDoubleUp" ).html("true");
+                        }
+                    }
+                    if(teamSelected == "orange"){
+                        if(isDoubleUp == "false"){
+                            socket.emit('messages',"addOrangeLow");
+                        }
+                        else if(isDoubleUp == "true"){
+                            socket.emit('messages',"addOrangeLowDouble");
+                            $( "#orangeUsedDoubleUp" ).html("true");
+                        }
+                    }
+                    if(teamSelected == "yellow"){
+                        if(isDoubleUp == "false"){
+                            socket.emit('messages',"addYellowLow");
+                        }
+                        else if(isDoubleUp == "true"){
+                            socket.emit('messages',"addYellowLowDouble");
+                            $( "#yellowUsedDoubleUp" ).html("true");
+                        }
+                    }
+                    if(teamSelected == "green"){
+                        if(isDoubleUp == "false"){
+                            socket.emit('messages',"addGreenLow");
+                        }
+                        else if(isDoubleUp == "true"){
+                            socket.emit('messages',"addGreenLowDouble");
+                            $( "#greenUsedDoubleUp" ).html("true");
+                        }
+                    }
+                    if(teamSelected == "blue"){
+                        if(isDoubleUp == "false"){
+                            socket.emit('messages',"addBlueLow");
+                        }
+                        else if(isDoubleUp == "true"){
+                            socket.emit('messages',"addBlueLowDouble");
+                            $( "#blueUsedDoubleUp" ).html("true");
+                        }
+                    }
+                    if(teamSelected == "purple"){
+                        if(isDoubleUp == "false"){
+                            socket.emit('messages',"addPurpleLow");
+                        }
+                        else if(isDoubleUp == "true"){
+                            socket.emit('messages',"addPurpleLowDouble");
+                            $( "#purpleUsedDoubleUp" ).html("true");
+                        }
+                    }
+                }
+                
+                if(questionSelected == "Low-32"){
+                    if(teamSelected == "pink"){
+                        if(isDoubleUp == "false"){
+                            socket.emit('messages',"addPinkLow");
+                        }
+                        else if(isDoubleUp == "true"){
+                            socket.emit('messages',"addPinkLowDouble");
+                            $( "#pinkUsedDoubleUp" ).html("true");
+                        }
+                    }
+                    if(teamSelected == "orange"){
+                        if(isDoubleUp == "false"){
+                            socket.emit('messages',"addOrangeLow");
+                        }
+                        else if(isDoubleUp == "true"){
+                            socket.emit('messages',"addOrangeLowDouble");
+                            $( "#orangeUsedDoubleUp" ).html("true");
+                        }
+                    }
+                    if(teamSelected == "yellow"){
+                        if(isDoubleUp == "false"){
+                            socket.emit('messages',"addYellowLow");
+                        }
+                        else if(isDoubleUp == "true"){
+                            socket.emit('messages',"addYellowLowDouble");
+                            $( "#yellowUsedDoubleUp" ).html("true");
+                        }
+                    }
+                    if(teamSelected == "green"){
+                        if(isDoubleUp == "false"){
+                            socket.emit('messages',"addGreenLow");
+                        }
+                        else if(isDoubleUp == "true"){
+                            socket.emit('messages',"addGreenLowDouble");
+                            $( "#greenUsedDoubleUp" ).html("true");
+                        }
+                    }
+                    if(teamSelected == "blue"){
+                        if(isDoubleUp == "false"){
+                            socket.emit('messages',"addBlueLow");
+                        }
+                        else if(isDoubleUp == "true"){
+                            socket.emit('messages',"addBlueLowDouble");
+                            $( "#blueUsedDoubleUp" ).html("true");
+                        }
+                    }
+                    if(teamSelected == "purple"){
+                        if(isDoubleUp == "false"){
+                            socket.emit('messages',"addPurpleLow");
+                        }
+                        else if(isDoubleUp == "true"){
+                            socket.emit('messages',"addPurpleLowDouble");
+                            $( "#purpleUsedDoubleUp" ).html("true");
+                        }
+                    }
+                }
+                
+                if(questionSelected == "Low-33"){
+                    if(teamSelected == "pink"){
+                        if(isDoubleUp == "false"){
+                            socket.emit('messages',"addPinkLow");
+                        }
+                        else if(isDoubleUp == "true"){
+                            socket.emit('messages',"addPinkLowDouble");
+                            $( "#pinkUsedDoubleUp" ).html("true");
+                        }
+                    }
+                    if(teamSelected == "orange"){
+                        if(isDoubleUp == "false"){
+                            socket.emit('messages',"addOrangeLow");
+                        }
+                        else if(isDoubleUp == "true"){
+                            socket.emit('messages',"addOrangeLowDouble");
+                            $( "#orangeUsedDoubleUp" ).html("true");
+                        }
+                    }
+                    if(teamSelected == "yellow"){
+                        if(isDoubleUp == "false"){
+                            socket.emit('messages',"addYellowLow");
+                        }
+                        else if(isDoubleUp == "true"){
+                            socket.emit('messages',"addYellowLowDouble");
+                            $( "#yellowUsedDoubleUp" ).html("true");
+                        }
+                    }
+                    if(teamSelected == "green"){
+                        if(isDoubleUp == "false"){
+                            socket.emit('messages',"addGreenLow");
+                        }
+                        else if(isDoubleUp == "true"){
+                            socket.emit('messages',"addGreenLowDouble");
+                            $( "#greenUsedDoubleUp" ).html("true");
+                        }
+                    }
+                    if(teamSelected == "blue"){
+                        if(isDoubleUp == "false"){
+                            socket.emit('messages',"addBlueLow");
+                        }
+                        else if(isDoubleUp == "true"){
+                            socket.emit('messages',"addBlueLowDouble");
+                            $( "#blueUsedDoubleUp" ).html("true");
+                        }
+                    }
+                    if(teamSelected == "purple"){
+                        if(isDoubleUp == "false"){
+                            socket.emit('messages',"addPurpleLow");
+                        }
+                        else if(isDoubleUp == "true"){
+                            socket.emit('messages',"addPurpleLowDouble");
+                            $( "#purpleUsedDoubleUp" ).html("true");
+                        }
+                    }
+                }
+                
+                if(questionSelected == "Low-34"){
+                    if(teamSelected == "pink"){
+                        if(isDoubleUp == "false"){
+                            socket.emit('messages',"addPinkLow");
+                        }
+                        else if(isDoubleUp == "true"){
+                            socket.emit('messages',"addPinkLowDouble");
+                            $( "#pinkUsedDoubleUp" ).html("true");
+                        }
+                    }
+                    if(teamSelected == "orange"){
+                        if(isDoubleUp == "false"){
+                            socket.emit('messages',"addOrangeLow");
+                        }
+                        else if(isDoubleUp == "true"){
+                            socket.emit('messages',"addOrangeLowDouble");
+                            $( "#orangeUsedDoubleUp" ).html("true");
+                        }
+                    }
+                    if(teamSelected == "yellow"){
+                        if(isDoubleUp == "false"){
+                            socket.emit('messages',"addYellowLow");
+                        }
+                        else if(isDoubleUp == "true"){
+                            socket.emit('messages',"addYellowLowDouble");
+                            $( "#yellowUsedDoubleUp" ).html("true");
+                        }
+                    }
+                    if(teamSelected == "green"){
+                        if(isDoubleUp == "false"){
+                            socket.emit('messages',"addGreenLow");
+                        }
+                        else if(isDoubleUp == "true"){
+                            socket.emit('messages',"addGreenLowDouble");
+                            $( "#greenUsedDoubleUp" ).html("true");
+                        }
+                    }
+                    if(teamSelected == "blue"){
+                        if(isDoubleUp == "false"){
+                            socket.emit('messages',"addBlueLow");
+                        }
+                        else if(isDoubleUp == "true"){
+                            socket.emit('messages',"addBlueLowDouble");
+                            $( "#blueUsedDoubleUp" ).html("true");
+                        }
+                    }
+                    if(teamSelected == "purple"){
+                        if(isDoubleUp == "false"){
+                            socket.emit('messages',"addPurpleLow");
+                        }
+                        else if(isDoubleUp == "true"){
+                            socket.emit('messages',"addPurpleLowDouble");
+                            $( "#purpleUsedDoubleUp" ).html("true");
+                        }
+                    }
+                }
+                
+                if(questionSelected == "Low-35"){
+                    if(teamSelected == "pink"){
+                        if(isDoubleUp == "false"){
+                            socket.emit('messages',"addPinkLow");
+                        }
+                        else if(isDoubleUp == "true"){
+                            socket.emit('messages',"addPinkLowDouble");
+                            $( "#pinkUsedDoubleUp" ).html("true");
+                        }
+                    }
+                    if(teamSelected == "orange"){
+                        if(isDoubleUp == "false"){
+                            socket.emit('messages',"addOrangeLow");
+                        }
+                        else if(isDoubleUp == "true"){
+                            socket.emit('messages',"addOrangeLowDouble");
+                            $( "#orangeUsedDoubleUp" ).html("true");
+                        }
+                    }
+                    if(teamSelected == "yellow"){
+                        if(isDoubleUp == "false"){
+                            socket.emit('messages',"addYellowLow");
+                        }
+                        else if(isDoubleUp == "true"){
+                            socket.emit('messages',"addYellowLowDouble");
+                            $( "#yellowUsedDoubleUp" ).html("true");
+                        }
+                    }
+                    if(teamSelected == "green"){
+                        if(isDoubleUp == "false"){
+                            socket.emit('messages',"addGreenLow");
+                        }
+                        else if(isDoubleUp == "true"){
+                            socket.emit('messages',"addGreenLowDouble");
+                            $( "#greenUsedDoubleUp" ).html("true");
+                        }
+                    }
+                    if(teamSelected == "blue"){
+                        if(isDoubleUp == "false"){
+                            socket.emit('messages',"addBlueLow");
+                        }
+                        else if(isDoubleUp == "true"){
+                            socket.emit('messages',"addBlueLowDouble");
+                            $( "#blueUsedDoubleUp" ).html("true");
+                        }
+                    }
+                    if(teamSelected == "purple"){
+                        if(isDoubleUp == "false"){
+                            socket.emit('messages',"addPurpleLow");
+                        }
+                        else if(isDoubleUp == "true"){
+                            socket.emit('messages',"addPurpleLowDouble");
+                            $( "#purpleUsedDoubleUp" ).html("true");
+                        }
+                    }
+                }
+                
+                if(questionSelected == "Low-36"){
+                    if(teamSelected == "pink"){
+                        if(isDoubleUp == "false"){
+                            socket.emit('messages',"addPinkLow");
+                        }
+                        else if(isDoubleUp == "true"){
+                            socket.emit('messages',"addPinkLowDouble");
+                            $( "#pinkUsedDoubleUp" ).html("true");
+                        }
+                    }
+                    if(teamSelected == "orange"){
+                        if(isDoubleUp == "false"){
+                            socket.emit('messages',"addOrangeLow");
+                        }
+                        else if(isDoubleUp == "true"){
+                            socket.emit('messages',"addOrangeLowDouble");
+                            $( "#orangeUsedDoubleUp" ).html("true");
+                        }
+                    }
+                    if(teamSelected == "yellow"){
+                        if(isDoubleUp == "false"){
+                            socket.emit('messages',"addYellowLow");
+                        }
+                        else if(isDoubleUp == "true"){
+                            socket.emit('messages',"addYellowLowDouble");
+                            $( "#yellowUsedDoubleUp" ).html("true");
+                        }
+                    }
+                    if(teamSelected == "green"){
+                        if(isDoubleUp == "false"){
+                            socket.emit('messages',"addGreenLow");
+                        }
+                        else if(isDoubleUp == "true"){
+                            socket.emit('messages',"addGreenLowDouble");
+                            $( "#greenUsedDoubleUp" ).html("true");
+                        }
+                    }
+                    if(teamSelected == "blue"){
+                        if(isDoubleUp == "false"){
+                            socket.emit('messages',"addBlueLow");
+                        }
+                        else if(isDoubleUp == "true"){
+                            socket.emit('messages',"addBlueLowDouble");
+                            $( "#blueUsedDoubleUp" ).html("true");
+                        }
+                    }
+                    if(teamSelected == "purple"){
+                        if(isDoubleUp == "false"){
+                            socket.emit('messages',"addPurpleLow");
+                        }
+                        else if(isDoubleUp == "true"){
+                            socket.emit('messages',"addPurpleLowDouble");
+                            $( "#purpleUsedDoubleUp" ).html("true");
+                        }
+                    }
+                }                
+            });
+            
+            $( "#startTimer" ).click(function() {
+                $( "#startTimer" ).prop('disabled', true);
+                socket.emit('messages',"startTimer");
+                // socket.emit('messages',"playCountdownBGM");
+                setTimeout(function(){
+                    $( "#startTimer" ).prop('disabled', false);
+                }, 5000);
+            });
+                        
+            $( "#resetTimer" ).click(function() {
+                $( "#resetTimer" ).prop('disabled', true);
+                socket.emit('messages',"resetTimer");
+                setTimeout(function(){
+                    $( "#resetTimer" ).prop('disabled', false);
+                }, 5000);
+            });
+            
+            $( "#showSuddenDeath1" ).click(function() {
+                socket.emit('messages',"openSuddenDeath1");
+            });
+            
+            $( "#showSuddenDeath2" ).click(function() {
+                socket.emit('messages',"openSuddenDeath2");
+            });
+            
+            $( "#playBackgroundBGM" ).click(function() {
+                socket.emit('messages',"playWaitingBGM");
+            });
+            
+			$('form').submit(function(e){
+				e.preventDefault();
+				var message = $('#chat_input').val();
+				socket.emit('messages', message);
+			});
+		</script>  
+				
+    </body>
+</html>  

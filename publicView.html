@@ -1,0 +1,601 @@
+<!-- 
+Written by Nestor Lee for DIS 2018 Workshop
+
+BGM
+"Happy Happy Game Show"
+Kevin MacLeod (incompetech.com)
+Licensed under Creative Commons: By Attribution 3.0
+http://creativecommons.org/licenses/by/3.0/
+
+Correct Buzzer
+"Game Show Correct Answer"
+License: The sound effect is permitted for non-commercial use under license “Attribution-NonCommercial 4.0 International (CC BY-NC 4.0)
+http://www.orangefreesounds.com/
+
+Wrong Buzzer
+"Wrong Answer Sound Effect"
+Licence: The sound effect is permitted for commercial use under license Creative Commons Attribution 4.0 International License”
+http://www.orangefreesounds.com/
+
+-->
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>DIS 2018 - ITRMS</title>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link href="https://fonts.googleapis.com/css?family=Dosis" rel="stylesheet">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+        <link rel="stylesheet" type="text/css" href="css/styling.css" />
+        
+        <!-- jQuery -->
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+        <script>window.jQuery || document.write('<script src="../../assets/js/vendor/jquery.min.js"><\/script>')</script>
+        
+        <!-- Socket i.o -->
+        <script src="/socket.io/socket.io.js"></script>
+    </head>
+    
+    <script type="text/javascript">
+        window.onbeforeunload = function() {
+            return "Leaving?";
+        }
+    </script>
+    
+    <script>
+        
+        var scoreArray = [0,0,0,0,0,0];
+        
+        $(document).on('keyup',function(evt) {
+            if (evt.keyCode == 27) {
+                $(".pinkTD").css("font-weight", "normal");
+                $(".orangeTD").css("font-weight", "normal");
+                $(".yellowTD").css("font-weight", "normal");
+                $(".greenTD").css("font-weight", "normal");
+                $(".blueTD").css("font-weight", "normal");
+                $(".purpleTD").css("font-weight", "normal");
+                
+                var highestNumber = 0;
+                for(var count=0; count<6; count++){
+                    if(scoreArray[count] > highestNumber){
+                        highestNumber = scoreArray[count];
+                    }
+                }                
+                
+                $(".pinkTD").html(scoreArray[0]);
+                if(scoreArray[0] == highestNumber){
+                    $(".pinkTD").css("font-weight", "bold");
+                }
+                                
+                $(".orangeTD").html(scoreArray[1]);
+                if(scoreArray[1] == highestNumber){
+                    $(".orangeTD").css("font-weight", "bold");
+                }
+                
+                $(".yellowTD").html(scoreArray[2]);
+                if(scoreArray[2] == highestNumber){
+                    $(".yellowTD").css("font-weight", "bold");
+                }
+                
+                $(".greenTD").html(scoreArray[3]);
+                if(scoreArray[3] == highestNumber){
+                    $(".greenTD").css("font-weight", "bold");
+                }
+                
+                $(".blueTD").html(scoreArray[4]);
+                if(scoreArray[4] == highestNumber){
+                    $(".blueTD").css("font-weight", "bold");
+                }
+                
+                $(".purpleTD").html(scoreArray[5]);
+                if(scoreArray[5] == highestNumber){
+                    $(".purpleTD").css("font-weight", "bold");
+                }
+            }
+        });
+        
+        var socket = io.connect();
+            socket.on('connect', function(data) {
+            socket.emit('join', 'PublicView has connected');
+        });
+        socket.on('broad', function(data) {
+            if(data=="changeRound1"){
+                $( "#roundHeader" ).html("Round 1");
+            }
+            else if(data=="changeRound2"){
+                $( "#roundHeader" ).html("Round 2");
+            }
+            else if(data=="changeOptionARed"){
+                $( "#optionAid" ).css("color", "black");
+                $( "#optionAid" ).css("background-color", "red");
+            }
+            else if(data=="changeOptionAGreen"){
+                $( "#optionAid" ).css("color", "black");
+                $( "#optionAid" ).css("background-color", "#7FFF00");
+            }
+            else if(data=="changeOptionABlack"){
+                $( "#optionAid" ).css("color", "black");
+                $( "#optionAid" ).css("background-color", "white");
+            }
+            else if(data=="changeOptionBRed"){
+                $( "#optionBid" ).css("color", "black");
+                $( "#optionBid" ).css("background-color", "red");
+            }
+            else if(data=="changeOptionBGreen"){
+                $( "#optionBid" ).css("color", "black");
+                $( "#optionBid" ).css("background-color", "#7FFF00");
+            }
+            else if(data=="changeOptionBBlack"){
+                $( "#optionBid" ).css("color", "black");
+                $( "#optionBid" ).css("background-color", "white");
+            }
+            else if(data=="changeOptionCRed"){
+                $( "#optionCid" ).css("color", "black");
+                $( "#optionCid" ).css("background-color", "red");
+            }
+            else if(data=="changeOptionCGreen"){
+                $( "#optionCid" ).css("color", "black");
+                $( "#optionCid" ).css("background-color", "#7FFF00");
+            }
+            else if(data=="changeOptionCBlack"){
+                $( "#optionCid" ).css("color", "black");
+                $( "#optionCid" ).css("background-color", "white");
+            }
+            else if(data=="changeOptionDRed"){
+                $( "#optionDid" ).css("color", "black");
+                $( "#optionDid" ).css("background-color", "red");
+            }
+            else if(data=="changeOptionDGreen"){
+                $( "#optionDid" ).css("color", "black");
+                $( "#optionDid" ).css("background-color", "#7FFF00");
+            }
+            else if(data=="changeOptionDBlack"){
+                $( "#optionDid" ).css("color", "black");
+                $( "#optionDid" ).css("background-color", "white");
+            }
+            else if(data=="startTimer"){
+                counter = setInterval(timer, 10);
+            }
+            else if(data=="resetTimer"){
+                clearInterval(counter);
+                count = initial;
+                displayCount(count);
+            }
+            else if(data=="addPinkHigh"){
+                scoreArray[0]+=30;
+            }
+            else if(data=="addPinkHighDouble"){
+                scoreArray[0]+=60;
+            }
+            else if(data=="addPinkMedium"){
+                scoreArray[0]+=20;
+            }
+            else if(data=="addPinkMediumDouble"){
+                scoreArray[0]+=40;
+            }
+            else if(data=="addPinkLow"){
+                scoreArray[0]+=10;
+            }
+            else if(data=="addPinkLowDouble"){
+                scoreArray[0]+=20;
+            }
+            else if(data=="addOrangeHigh"){
+                scoreArray[1]+=30;
+            }
+            else if(data=="addOrangeHighDouble"){
+                scoreArray[0]+=60;
+            }
+            else if(data=="addOrangeMedium"){
+                scoreArray[1]+=20;
+            }
+            else if(data=="addOrangeMediumDouble"){
+                scoreArray[1]+=40;
+            }
+            else if(data=="addOrangeLow"){
+                scoreArray[1]+=10;
+            }
+            else if(data=="addOrangeLowDouble"){
+                scoreArray[1]+=20;
+            }
+            else if(data=="addYellowHigh"){
+                scoreArray[2]+=30;
+            }
+            else if(data=="addYellowHighDouble"){
+                scoreArray[2]+=60;
+            }
+            else if(data=="addYellowMedium"){
+                scoreArray[2]+=20;
+            }
+            else if(data=="addYellowMediumDouble"){
+                scoreArray[2]+=40;
+            }
+            else if(data=="addYellowLow"){
+                scoreArray[2]+=10;
+            }
+            else if(data=="addYellowLowDouble"){
+                scoreArray[2]+=20;
+            }
+            else if(data=="addGreenHigh"){
+                scoreArray[3]+=30;
+            }
+            else if(data=="addGreenHighDouble"){
+                scoreArray[3]+=60;
+            }
+            else if(data=="addGreenMedium"){
+                scoreArray[3]+=20;
+            }
+            else if(data=="addGreenMediumDouble"){
+                scoreArray[3]+=40;
+            }
+            else if(data=="addGreenLow"){
+                scoreArray[3]+=10;
+            }
+            else if(data=="addGreenLowDouble"){
+                scoreArray[3]+=20;
+            }
+            else if(data=="addBlueHigh"){
+                scoreArray[4]+=30;
+            }
+            else if(data=="addBlueHighDouble"){
+                scoreArray[4]+=60;
+            }
+            else if(data=="addBlueMedium"){
+                scoreArray[4]+=20;
+            }
+            else if(data=="addBlueMediumDouble"){
+                scoreArray[4]+=40;
+            }
+            else if(data=="addBlueLow"){
+                scoreArray[4]+=10;
+            }
+            else if(data=="addBlueLowDouble"){
+                scoreArray[4]+=20;
+            }
+            else if(data=="addPurpleHigh"){
+                scoreArray[5]+=30;
+            }
+            else if(data=="addPurpleHighDouble"){
+                scoreArray[5]+=60;
+            }
+            else if(data=="addPurpleMedium"){
+                scoreArray[5]+=20;
+            }
+            else if(data=="addPurpleMediumDouble"){
+                scoreArray[5]+=40;
+            }
+            else if(data=="addPurpleLow"){
+                scoreArray[5]+=10;
+            }
+            else if(data=="addPurpleLowDouble"){
+                scoreArray[5]+=20;
+            }
+            else if(data=="openSuddenDeath1"){
+                angular.element("#MainController").scope().openModalSD1();
+                angular.element("#MainController").scope().$apply();
+            }
+            else if(data=="openSuddenDeath2"){
+                angular.element("#MainController").scope().openModalSD2();
+                angular.element("#MainController").scope().$apply();
+            }
+            else if(data=="playCorrectBGM"){    
+                var IncorrectAudio = new Audio('rsc/correctanswer.mp3');
+                IncorrectAudio.play();
+            }
+            else if(data=="playIncorrectBGM"){
+                var IncorrectAudio = new Audio('rsc/wronganswer.mp3');
+                IncorrectAudio.play();
+            }
+            else if(data=="playCountdownBGM"){
+                var IncorrectAudio = new Audio('rsc/countdown.mp3');
+                IncorrectAudio.play();
+            }
+            else if(data=="playWaitingBGM"){
+                var IncorrectAudio = new Audio('rsc/happyhappygameshow.mp3');
+                IncorrectAudio.play();
+            }
+        });
+
+    </script> 
+    
+    <body ng-app="myApp" ng-controller="MainController">
+        
+        <!-- For Sudden Death Questions -->
+        <div id="MainController" ng-controller="MainController"></div> 
+        
+        <!-- Start of Navbar -->
+        <nav class="navbar navbar-default">
+            <div class="container-fluid">
+                <div class="navbar-header">
+                    <span class="navbar-brand" id="roundHeader">Round 1</span>
+                </div>
+            </div>
+        </nav>
+        <!-- End of Navbar -->
+        
+        <!-- Start of Score Table -->
+        <div class="container-fluid">
+            <div class="col col-lg-2"></div>
+            <div class="col col-lg-8">
+                <table class="table table-bordered">
+                    <thead>
+                        <tbody id="body">
+                            <tr>
+                                <th style="background-color: grey; color: white; font-size: 30px; width: 16%; ">Team</th>
+                                <td style="background-color: #FF69B4; text-align: center; font-weight: bold; font-size: 30px; width: 14%;">Pink</td>
+                                <td style="background-color: orange; text-align: center; font-weight: bold; font-size: 30px; width: 14%;">Orange</td>
+                                <td style="background-color: yellow; text-align: center; font-weight: bold; font-size: 30px; width: 14%;">Yellow</td>
+                                <td style="background-color: #7FFF00; text-align: center; font-weight: bold; font-size: 30px; width: 14%;">Green</td>
+                                <td style="background-color: #0276FD; text-align: center; font-weight: bold; font-size: 30px; width: 14%;">Blue</td>
+                                <td style="background-color: #9966cc; text-align: center; font-weight: bold; font-size: 30px; width: 14%;">Purple</td>
+                            </tr>
+                        </tbody>
+                </table>
+            </div>
+            <div class="col col-lg-2"></div>
+        </div>
+        <!-- End of Score Table -->
+                
+        <div class="container-fluid">
+            <div class="col col-lg-4 thirtyContainer">
+                <h1>Gold</h1>
+                
+                <div ng-init = "myVar = 'rsc/lock.png'">
+                    <div class="grid-container">
+                        
+                        <div class="grid-item">
+                            <a href="#1" ng-click="openModal1()" id="p1"><img onclick="clickFunction(p1);" src="rsc/shield/shield-01.png" height="70" width="70"></a>
+                            <p id="w1" style="display:none">ITRMS</p>
+                        </div>
+                        
+                        <div class="grid-item">
+                            <a href="#2" ng-click="openModal2()" id="p2"><img onclick="clickFunction(p2);" src="rsc/shield/shield-02.png" height="70" width="70"></a>
+                            <p id="w2" style="display:none">ITRMS</p>
+                        </div>
+
+                        <div class="grid-item">
+                            <a href="#3" ng-click="openModal3()" id="p3"><img onclick="clickFunction(p3);" src="rsc/shield/shield-03.png" height="70" width="70"></a>
+                            <p id="w3" style="display:none">ITRMS</p>
+                        </div>
+                            
+                        <div class="grid-item">
+                            <a href="#4" ng-click="openModal4()" id="p4"><img onclick="clickFunction(p4);" src="rsc/shield/shield-04.png" height="70" width="70"></a>
+                            <p id="w4" style="display:none">ITRMS</p>
+                        </div>
+                        
+                        <div class="grid-item">
+                            <a href="#5" ng-click="openModal5()" id="p5"><img onclick="clickFunction(p5);" src="rsc/shield/shield-05.png" height="70" width="70"></a>
+                            <p id="w5" style="display:none">ITRMS</p>
+                        </div>
+                        
+                        <div class="grid-item">
+                            <a href="#6" ng-click="openModal6()" id="p6"><img onclick="clickFunction(p6);" src="rsc/shield/shield-06.png" height="70" width="70"></a>
+                            <p id="w6" style="display:none">ITRMS</p>
+                        </div>
+
+                        <div class="grid-item">
+                            <a href="#7" ng-click="openModal7()" id="p7"><img onclick="clickFunction(p7);" src="rsc/shield/shield-07.png" height="70" width="70"></a>
+                            <p id="w7" style="display:none">ITRMS</p>
+                        </div>
+                            
+                        <div class="grid-item">
+                            <a href="#8" ng-click="openModal8()" id="p8"><img onclick="clickFunction(p8);" src="rsc/shield/shield-08.png" height="70" width="70"></a>
+                            <p id="w8" style="display:none">ITRMS</p>
+                        </div>
+                        
+                        <div class="grid-item">
+                            <a href="#9" ng-click="openModal9()" id="p9"><img onclick="clickFunction(p9);" src="rsc/shield/shield-09.png" height="70" width="70"></a>
+                            <p id="w9" style="display:none">ITRMS</p>
+                        </div>
+                        
+                        <div class="grid-item">
+                            <a href="#10" ng-click="openModal10()" id="p10"><img onclick="clickFunction(p10);" src="rsc/shield/shield-10.png" height="70" width="70"></a>
+                            <p id="w10" style="display:none">ITRMS</p>
+                        </div>
+
+                        <div class="grid-item">
+                            <a href="#11" ng-click="openModal11()" id="p11"><img onclick="clickFunction(p11);" src="rsc/shield/shield-11.png" height="70" width="70"></a>
+                            <p id="w11" style="display:none">ITRMS</p>
+                        </div>
+                            
+                        <div class="grid-item">
+                            <a href="#12" ng-click="openModal12()" id="p12"><img onclick="clickFunction(p12);" src="rsc/shield/shield-12.png" height="70" width="70"></a>
+                            <p id="w12" style="display:none">ITRMS</p>
+                        </div>
+                        
+                    </div>
+                </div>
+            </div>
+                                                     
+            <div class="col col-lg-4 twentyContainer">
+                <h1>Silver</h1>
+                
+                <div class="grid-container">
+                    
+                    <div class="grid-item">
+                        <a href="#13" ng-click="openModal13()" id="p13"><img onclick="clickFunction(p13);" src="rsc/shield/shield-13.png" height="70" width="70"></a>
+                        <p id="w13" style="display:none">ITRMS</p>
+                    </div>
+                    
+                    <div class="grid-item">
+                        <a href="#14" ng-click="openModal14()" id="p14"><img onclick="clickFunction(p14);" src="rsc/shield/shield-14.png" height="70" width="70"></a>
+                        <p id="w14" style="display:none">ITRMS</p>
+                    </div>
+                    
+                    <div class="grid-item">
+                        <a href="#15" ng-click="openModal15()" id="p15"><img onclick="clickFunction(p15);" src="rsc/shield/shield-15.png" height="70" width="70"></a>
+                        <p id="w15" style="display:none">ITRMS</p>
+                    </div>
+                    
+                    <div class="grid-item">
+                        <a href="#16" ng-click="openModal16()" id="p16"><img onclick="clickFunction(p16);" src="rsc/shield/shield-16.png" height="70" width="70"></a>
+                        <p id="w16" style="display:none">ITRMS</p>
+                    </div>
+                    
+                    <div class="grid-item">
+                        <a href="#17" ng-click="openModal17()" id="p17"><img onclick="clickFunction(p17);" src="rsc/shield/shield-17.png" height="70" width="70"></a>
+                        <p id="w17" style="display:none">ITRMS</p>
+                    </div>
+                    
+                    <div class="grid-item">
+                        <a href="#18" ng-click="openModal18()" id="p18"><img onclick="clickFunction(p18);" src="rsc/shield/shield-18.png" height="70" width="70"></a>
+                        <p id="w18" style="display:none">ITRMS</p>
+                    </div>
+                    
+                    <div class="grid-item">
+                        <a href="#19" ng-click="openModal19()" id="p19"><img onclick="clickFunction(p19);" src="rsc/shield/shield-19.png" height="70" width="70"></a>
+                        <p id="w19" style="display:none">ITRMS</p>
+                    </div>
+                    
+                    <div class="grid-item">
+                        <a href="#20" ng-click="openModal20()" id="p20"><img onclick="clickFunction(p20);" src="rsc/shield/shield-20.png" height="70" width="70"></a>
+                        <p id="w20" style="display:none">ITRMS</p>
+                    </div>
+                    
+                    <div class="grid-item">
+                        <a href="#21" ng-click="openModal21()" id="p21"><img onclick="clickFunction(p21);" src="rsc/shield/shield-21.png" height="70" width="70"></a>
+                        <p id="w21" style="display:none">ITRMS</p>
+                    </div>
+                    
+                    <div class="grid-item">
+                        <a href="#22" ng-click="openModal22()" id="p22"><img onclick="clickFunction(p22);" src="rsc/shield/shield-22.png" height="70" width="70"></a>
+                        <p id="w22" style="display:none">ITRMS</p>
+                    </div>
+                    
+                    <div class="grid-item">
+                        <a href="#23" ng-click="openModal23()" id="p23"><img onclick="clickFunction(p23);" src="rsc/shield/shield-23.png" height="70" width="70"></a>
+                        <p id="w23" style="display:none">ITRMS</p>
+                    </div>
+                    
+                    <div class="grid-item">
+                        <a href="#24" ng-click="openModal24()" id="p24"><img onclick="clickFunction(p24);" src="rsc/shield/shield-24.png" height="70" width="70"></a>
+                        <p id="w24" style="display:none">ITRMS</p>
+                    </div>
+                    
+                </div>
+            </div>
+                                                                                                        
+            <div class="col col-lg-4 tenContainer">
+                <h1>Bronze</h1>
+                
+                <div class="grid-container">
+                    
+                    <div class="grid-item">
+                        <a href="#25" ng-click="openModal25()" id="p25"><img onclick="clickFunction(p25);" src="rsc/shield/shield-25.png" height="70" width="70"></a>
+                        <p id="w25" style="display:none">ITRMS</p>
+                    </div>
+                    
+                    <div class="grid-item">
+                        <a href="#26" ng-click="openModal26()" id="p26"><img onclick="clickFunction(p26);" src="rsc/shield/shield-26.png" height="70" width="70"></a>
+                        <p id="w26" style="display:none">ITRMS</p>
+                    </div>
+                    
+                    <div class="grid-item">
+                        <a href="#27" ng-click="openModal27()" id="p27"><img onclick="clickFunction(p27);" src="rsc/shield/shield-27.png" height="70" width="70"></a>
+                        <p id="w27" style="display:none">ITRMS</p>
+                    </div>
+                    
+                    <div class="grid-item">
+                        <a href="#28" ng-click="openModal28()" id="p28"><img onclick="clickFunction(p28);" src="rsc/shield/shield-28.png" height="70" width="70"></a>
+                        <p id="w28" style="display:none">ITRMS</p>
+                    </div>
+                    
+                    <div class="grid-item">
+                        <a href="#29" ng-click="openModal29()" id="p29"><img onclick="clickFunction(p29);" src="rsc/shield/shield-29.png" height="70" width="70"></a>
+                        <p id="w29" style="display:none">ITRMS</p>
+                    </div>
+                    
+                    <div class="grid-item">
+                        <a href="#30" ng-click="openModal30()" id="p30"><img onclick="clickFunction(p30);" src="rsc/shield/shield-30.png" height="70" width="70"></a>
+                        <p id="w30" style="display:none">ITRMS</p>
+                    </div>
+                    
+                    <div class="grid-item">
+                        <a href="#31" ng-click="openModal31()" id="p31"><img onclick="clickFunction(p31);" src="rsc/shield/shield-31.png" height="70" width="70"></a>
+                        <p id="w31" style="display:none">ITRMS</p>
+                    </div>
+                    
+                    <div class="grid-item">
+                        <a href="#32" ng-click="openModal32()" id="p32"><img onclick="clickFunction(p32);" src="rsc/shield/shield-32.png" height="70" width="70"></a>
+                        <p id="w32" style="display:none">ITRMS</p>
+                    </div>
+                    
+                    <div class="grid-item">
+                        <a href="#33" ng-click="openModal33()" id="p33"><img onclick="clickFunction(p33);" src="rsc/shield/shield-33.png" height="70" width="70"></a>
+                        <p id="w33" style="display:none">ITRMS</p>
+                    </div>
+                    
+                    <div class="grid-item">
+                        <a href="#34" ng-click="openModal34()" id="p34"><img onclick="clickFunction(p34);" src="rsc/shield/shield-34.png" height="70" width="70"></a>
+                        <p id="w34" style="display:none">ITRMS</p>
+                    </div>
+                    
+                    <div class="grid-item">
+                        <a href="#35" ng-click="openModal35()" id="p35"><img onclick="clickFunction(p35);" src="rsc/shield/shield-35.png" height="70" width="70"></a>
+                        <p id="w35" style="display:none">ITRMS</p>
+                    </div>
+                    
+                    <div class="grid-item">
+                        <a href="#36" ng-click="openModal36()" id="p36"><img onclick="clickFunction(p36);" src="rsc/shield/shield-36.png" height="70" width="70"></a>
+                        <p id="w36" style="display:none">ITRMS</p>
+                    </div>
+                    
+                </div>
+            </div>
+        </div>    
+
+    <!-- Placed at the end of the document so the pages load faster -->
+    
+    <!-- Bootstrap core JavaScript-->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+        
+    
+    <!-- AngularJS -->
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular-animate.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular-touch.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/angular-ui-bootstrap/2.5.0/ui-bootstrap-tpls.min.js"></script>
+        
+    <!-- Custom JS File -->
+    <script src="js/angularJSFile.js"></script>
+    <script src="js/questionClickJSFile.js"></script>
+        
+    <script>
+        
+        function createTable(){
+            var tbody = $('#body');
+            // Pink, Orange, Yellow, Green, Blue Purple
+            
+            var tr = $('<tr/>').appendTo(tbody);
+            tr.append('<th style="background-color: grey; color: white; font-size: 30px;">Score</th>');
+            for(var i=0; i<6; i++){
+                switch(i){
+                    case 0:
+                        tr.append('<td class="pinkTD">' + scoreArray[i] + '</td>');
+                        break;
+                    case 1:
+                        tr.append('<td class=orangeTD>' + scoreArray[i] + '</td>');
+                        break;
+                    case 2:
+                        tr.append('<td class=yellowTD>' + scoreArray[i] + '</td>');
+                        break;
+                    case 3:
+                        tr.append('<td class=greenTD>' + scoreArray[i] + '</td>');
+                        break;
+                    case 4:
+                        tr.append('<td class=blueTD>' + scoreArray[i] + '</td>');
+                        break;
+                    case 5:
+                        tr.append('<td class=purpleTD>' + scoreArray[i] + '</td>');
+                        break;
+                }
+            }
+        }
+        
+        $(document).ready(function(){
+            createTable();
+        });
+    </script>
+        
+    </body>
+    
+</html>
